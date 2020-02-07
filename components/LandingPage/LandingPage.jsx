@@ -1,13 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, View, ImageBackground } from 'react-native';
+import { Link } from 'react-router-native';
 
-function LandingPage() {
+const LandingPage = () => {
     return (
         <View style={styles.optionsContainer}>
-            <ImageBackground style={styles.foodContainer} source={require('/Users/mfuechec/Desktop/RecipeBookNative/RecipeBook/assets/foodBackground.jpg')}>
-            </ImageBackground>
-            <ImageBackground style={styles.drinksContainer} source={require('/Users/mfuechec/Desktop/RecipeBookNative/RecipeBook/assets/drinksBackground.jpg')}>
-            </ImageBackground>
+            <Link style={styles.foodContainer} to='/NewFood'>
+                <ImageBackground style={styles.foodImage} source={require('/Users/mfuechec/Desktop/RecipeBook/assets/foodBackground.jpg')}>
+                </ImageBackground>
+            </Link>
+            <Link style={styles.drinksContainer} to='NewDrinks'>
+                <ImageBackground style={styles.drinksImage} source={require('/Users/mfuechec/Desktop/RecipeBook/assets/drinksBackground.jpg')}>
+                </ImageBackground>
+            </Link>
         </View>
     )
 }
@@ -25,9 +30,17 @@ const styles = StyleSheet.create({
         flex: .5,
         justifyContent: 'center'
     },
+    foodImage: {
+        width: '100%',
+        height: '100%'
+    },
     drinksContainer: {
         width: '100%',
         flex: .5,
         justifyContent: 'center'
+    },
+    drinksImage: {
+        width: '100%',
+        height: '100%'
     }
 })
