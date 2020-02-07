@@ -3,6 +3,7 @@ import { NativeRouter, Route } from "react-router-native";
 import LandingPage from './components/LandingPage/LandingPage';
 import NewFood from './components/NewFood/NewFood';
 import NewDrinks from './components/NewDrinks/NewDrinks';
+import NavBar from './components/NavBar/NavBar';
 
 export default class App extends Component {
   constructor() {
