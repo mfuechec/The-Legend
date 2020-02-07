@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ShadowPropTypesIOS } from 'react-native';
 import { Link } from 'react-router-native';
 
-const NavBar = () => {
+const NavBar = (props) => {
     return (
         <View style={styles.NavBar} >
-            <Link>
+            <Link to='/'>
                 <Text style={styles.homeButton}>
                     Home
                 </Text>
