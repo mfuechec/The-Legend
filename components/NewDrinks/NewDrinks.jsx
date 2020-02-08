@@ -1,14 +1,17 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import NavBar from '../NavBar/NavBar';
+import RecipeList from './RecipeList';
 
-const NewDrinks = () => {
+const NewDrinks = (props) => {
     return (
         <View style={styles.container}>
             <NavBar />
             <View style={styles.mainDisplay}>
                 <View style={styles.filterContainer}></View>
-                <View style={styles.recipesContainer}></View>
+                <View style={styles.recipesContainer}>
+                    <RecipeList drinks={props.drinks} drink={props.drink} />
+                </View>
             </View>
         </View>
     )
