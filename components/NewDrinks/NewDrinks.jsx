@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import NavBar from '../NavBar/NavBar';
-import RecipeList from './RecipeList';
+import DrinksList from './DrinksList';
 
 const NewDrinks = (props) => {
     return (
@@ -10,7 +10,7 @@ const NewDrinks = (props) => {
             <View style={styles.mainDisplay}>
                 <View style={styles.filterContainer}></View>
                 <View style={styles.recipesContainer}>
-                    <RecipeList drinks={props.drinks} drink={props.drink} />
+                    <DrinksList drinks={props.drinks} drink={props.drink} />
                 </View>
             </View>
         </View>

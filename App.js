@@ -98,18 +98,25 @@ export default class App extends Component {
         measurements: ["2 oz ", "2 tsp ", "1/2 tsp ", "1 twist of ", null, null, null, null, null, null, null, null, null, null, null]
       }
     }
+    this.findRecipes = this.findRecipes.bind(this);
   }
 
   findRecipes() {
-    // Find the 10-15 most popular recipes
+    console.log('howdy')
   }
   
   render() {
     return (
       <NativeRouter>
-        <Route exact path='/' findRecipes={this.findRecipes} component={LandingPage} />
-        <Route path='/NewFood' component={NewFood} />
-        <Route path='/NewDrinks' drinks={this.state.drinks} drink={this.state.drink} component={NewDrinks} />
+        <Route
+          exact path='/'
+          render={(props) => <LandingPage {...props} findRecipes={this.findRecipes}/>} />
+        <Route
+          path='/NewFood'
+          component={NewFood} />
+        <Route
+          path='/NewDrinks'
+          render={(props) => <NewDrinks {...props} drinks={this.state.drinks} drink={this.state.drink}/>}/>
       </NativeRouter>
     )
   }

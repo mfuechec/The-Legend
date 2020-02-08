@@ -1,18 +1,22 @@
 import React from 'react';
-import { StyleSheet, View, ImageBackground } from 'react-native';
+import { StyleSheet, View, ImageBackground, TouchableHighlight } from 'react-native';
 import { Link } from 'react-router-native';
 
 const LandingPage = (props) => {
     return (
         <View style={styles.optionsContainer}>
-            <Link style={styles.foodContainer} to='/NewFood'>
-                <ImageBackground onClick={props.findRecipes} style={styles.foodImage} source={require('/Users/mfuechec/Desktop/RecipeBook/assets/foodBackground.jpg')}>
-                </ImageBackground>
-            </Link>
-            <Link style={styles.drinksContainer} to='NewDrinks'>
-                <ImageBackground style={styles.drinksImage} source={require('/Users/mfuechec/Desktop/RecipeBook/assets/drinksBackground.jpg')}>
-                </ImageBackground>
-            </Link>
+            <TouchableHighlight style={styles.foodContainer}>
+                <Link onPress={props.findRecipes} to='/NewFood'>
+                    <ImageBackground style={styles.foodImage} source={require('/Users/mfuechec/Desktop/RecipeBook/assets/foodBackground.jpg')}>
+                    </ImageBackground>
+                </Link>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.foodContainer}>
+                <Link onPress={props.findRecipes} to='/NewDrinks'>
+                    <ImageBackground style={styles.drinksImage} source={require('/Users/mfuechec/Desktop/RecipeBook/assets/drinksBackground.jpg')}>
+                    </ImageBackground>
+                </Link>
+            </TouchableHighlight>
         </View>
     )
 }
