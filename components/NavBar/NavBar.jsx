@@ -20,7 +20,7 @@ const NavBar = () => {
 const styles = StyleSheet.create({
     NavBar: {
         width: '100%',
-        height: '5%',
+        height: '10%',
         backgroundColor: '#333333',
         display: 'flex'
     },

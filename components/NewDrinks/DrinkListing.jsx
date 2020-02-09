@@ -7,9 +7,15 @@ const DrinksListing = (props) => {
     return (
         <TouchableHighlight onPress={()=>{console.log('hi')}} style={styles.listingContainer}>
             <View style={styles.listingContainerView}>
-                <View style={styles.imageContainer}><Image style={styles.image} source={{uri: drink.image}}></Image></View>
-                <View style={styles.nameContainer}><Text style={styles.name}>{drink.name}</Text></View>
-                <View style={styles.descContainer}><IngredientsList ingredients={drink.ingredients} /></View>
+                <View style={styles.imageContainer}>
+                    <Image style={styles.image} source={{uri: drink.image}}></Image>
+                </View>
+                <View style={styles.nameContainer}>
+                    <View style={{height: '100%'}}>
+                        <Text style={styles.name}>{drink.name}</Text>
+                        <IngredientsList ingredients={drink.ingredients} />
+                    </View>
+                </View>
             </View>
         </TouchableHighlight>
     )
@@ -17,8 +23,7 @@ const DrinksListing = (props) => {
 
 const styles = StyleSheet.create({
     listingContainer: {
-        height: '20%',
-        backgroundColor: '#333333',
+        height: '15%',
         borderWidth: 1,
         marginBottom: '.25%'
     },
@@ -30,7 +35,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden'
     },
     imageContainer: {
-        width: '20%',
+        width: '30%',
         height: '100%',
         marginLeft: '2.5%',
         marginRight: '5%',
@@ -41,17 +46,18 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     nameContainer: {
-        backgroundColor: 'blue',
-        width: '32.5%',
+        width: '27.5%',
         height: '100%',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        display: 'flex',
+        flexDirection: 'column'
     },
     name: {
         alignSelf: 'center',
         fontSize: 35
     },
     descContainer: {
-        width: '32.5%',
+        width: '27.5%',
         height: '100%',
         marginLeft: '5%',
         marginRight: '2.5%',

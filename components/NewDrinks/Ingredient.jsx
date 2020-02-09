@@ -3,7 +3,7 @@ import { Text, StyleSheet } from 'react-native';
 
 const Ingredient = (props) => {
     return (
-        <Text style={styles.ingredient}>{props.ingredient}</Text>
+    <Text style={styles.ingredient}>{props.ingredient}</Text>
     )
 }
 
