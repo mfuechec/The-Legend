@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import NavBar from '../NavBar/NavBar';
 import DrinksList from './DrinksList';
 
@@ -10,7 +10,9 @@ const NewDrinks = (props) => {
             <View style={styles.mainDisplay}>
                 <View style={styles.filterContainer}></View>
                 <View style={styles.recipesContainer}>
-                    <DrinksList drinks={props.drinks} drink={props.drink} />
+                    <ScrollView style={styles.drinkListScroll}>
+                        <DrinksList drinks={props.drinks} drink={props.drink} />
+                    </ScrollView>
                 </View>
             </View>
         </View>
@@ -25,7 +27,7 @@ const styles = StyleSheet.create({
     mainDisplay: {
         width: '100%',
         height: '95%',
-        backgroundColor: 'tomato',
+        backgroundColor: '#eeeeee',
         display: 'flex',
         flexDirection: 'row'
     },

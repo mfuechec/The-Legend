@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Link } from 'react-router-native';
 
-const NavBar = (props) => {
+const NavBar = () => {
     return (
         <View style={styles.NavBar} >
             <View style={styles.upperBorder}></View>
@@ -38,8 +38,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         justifyContent: 'center',
         borderColor: 'red',
-        borderWidth: 1,
-        textAlign: 'center'
+        borderWidth: 1
     },
     text: {
         textAlign: 'center'
