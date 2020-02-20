@@ -44,123 +44,127 @@ export default class App extends Component {
   }
 
   sortFoodRecipes(datum) {
-    var recipes = [];
-    for (var i = 0; i < datum.length; i++) {
-      var recipe = {};
-      var data = datum[i]
-      recipe.name = data.strMeal;
-      recipe.type = data.strCategory;
-      recipe.instructions = data.strInstructions;
-      recipe.image = data.strMealThumb;
-      recipe.ingredients = [
-        data.strIngredient1,
-        data.strIngredient2,
-        data.strIngredient3,
-        data.strIngredient4,
-        data.strIngredient5,
-        data.strIngredient6,
-        data.strIngredient7,
-        data.strIngredient8,
-        data.strIngredient9,
-        data.strIngredient10,
-        data.strIngredient11,
-        data.strIngredient12,
-        data.strIngredient13,
-        data.strIngredient14,
-        data.strIngredient15,
-        data.strIngredient16,
-        data.strIngredient17,
-        data.strIngredient18,
-        data.strIngredient19,
-        data.strIngredient20,
-      ]
-      recipe.measurements = [
-        data.strMeasure1,
-        data.strMeasure2,
-        data.strMeasure3,
-        data.strMeasure4,
-        data.strMeasure5,
-        data.strMeasure6,
-        data.strMeasure7,
-        data.strMeasure8,
-        data.strMeasure9,
-        data.strMeasure10,
-        data.strMeasure11,
-        data.strMeasure12,
-        data.strMeasure13,
-        data.strMeasure14,
-        data.strMeasure15,
-        data.strMeasure16,
-        data.strMeasure17,
-        data.strMeasure18,
-        data.strMeasure19,
-        data.strMeasure20,
-      ]
-      recipes.push(recipe)
+    if (this.state.foods.length === 0) {
+      var recipes = [];
+      for (var i = 0; i < datum.length; i++) {
+        var recipe = {};
+        var data = datum[i]
+        recipe.name = data.strMeal;
+        recipe.type = data.strCategory;
+        recipe.instructions = data.strInstructions;
+        recipe.image = data.strMealThumb;
+        recipe.ingredients = [
+          data.strIngredient1,
+          data.strIngredient2,
+          data.strIngredient3,
+          data.strIngredient4,
+          data.strIngredient5,
+          data.strIngredient6,
+          data.strIngredient7,
+          data.strIngredient8,
+          data.strIngredient9,
+          data.strIngredient10,
+          data.strIngredient11,
+          data.strIngredient12,
+          data.strIngredient13,
+          data.strIngredient14,
+          data.strIngredient15,
+          data.strIngredient16,
+          data.strIngredient17,
+          data.strIngredient18,
+          data.strIngredient19,
+          data.strIngredient20,
+        ]
+        recipe.measurements = [
+          data.strMeasure1,
+          data.strMeasure2,
+          data.strMeasure3,
+          data.strMeasure4,
+          data.strMeasure5,
+          data.strMeasure6,
+          data.strMeasure7,
+          data.strMeasure8,
+          data.strMeasure9,
+          data.strMeasure10,
+          data.strMeasure11,
+          data.strMeasure12,
+          data.strMeasure13,
+          data.strMeasure14,
+          data.strMeasure15,
+          data.strMeasure16,
+          data.strMeasure17,
+          data.strMeasure18,
+          data.strMeasure19,
+          data.strMeasure20,
+        ]
+        recipes.push(recipe)
+      }
+      this.setState({
+        foods: recipes
+      })
     }
-    this.setState({
-      foods: recipes
-    })
   }
 
   sortDrinkRecipes(datum) {
-    var recipes = [];
-    for (var i = 0; i < datum.length; i++) {
-      var recipe = {};
-      var data = datum[i]
-      recipe.name = data.strDrink;
-      recipe.type = data.strCategory;
-      recipe.instructions = data.strInstructions;
-      recipe.image = data.strDrinkThumb;
-      recipe.ingredients = [
-        data.strIngredient1,
-        data.strIngredient2,
-        data.strIngredient3,
-        data.strIngredient4,
-        data.strIngredient5,
-        data.strIngredient6,
-        data.strIngredient7,
-        data.strIngredient8,
-        data.strIngredient9,
-        data.strIngredient10,
-        data.strIngredient11,
-        data.strIngredient12,
-        data.strIngredient13,
-        data.strIngredient14,
-        data.strIngredient15,
-        data.strIngredient16,
-        data.strIngredient17,
-        data.strIngredient18,
-        data.strIngredient19,
-        data.strIngredient20,
-      ]
-      recipe.measurements = [
-        data.strMeasure1,
-        data.strMeasure2,
-        data.strMeasure3,
-        data.strMeasure4,
-        data.strMeasure5,
-        data.strMeasure6,
-        data.strMeasure7,
-        data.strMeasure8,
-        data.strMeasure9,
-        data.strMeasure10,
-        data.strMeasure11,
-        data.strMeasure12,
-        data.strMeasure13,
-        data.strMeasure14,
-        data.strMeasure15,
-        data.strMeasure16,
-        data.strMeasure17,
-        data.strMeasure18,
-        data.strMeasure19,
-        data.strMeasure20,
-      ]
-      recipes.push(recipe)
+    if (this.state.drinks.length === 0) {
+      var recipes = [];
+      for (var i = 0; i < datum.length; i++) {
+        var recipe = {};
+        var data = datum[i]
+        recipe.name = data.strDrink;
+        recipe.type = data.strCategory;
+        recipe.instructions = data.strInstructions;
+        recipe.image = data.strDrinkThumb;
+        recipe.ingredients = [
+          data.strIngredient1,
+          data.strIngredient2,
+          data.strIngredient3,
+          data.strIngredient4,
+          data.strIngredient5,
+          data.strIngredient6,
+          data.strIngredient7,
+          data.strIngredient8,
+          data.strIngredient9,
+          data.strIngredient10,
+          data.strIngredient11,
+          data.strIngredient12,
+          data.strIngredient13,
+          data.strIngredient14,
+          data.strIngredient15,
+          data.strIngredient16,
+          data.strIngredient17,
+          data.strIngredient18,
+          data.strIngredient19,
+          data.strIngredient20,
+        ]
+        recipe.measurements = [
+          data.strMeasure1,
+          data.strMeasure2,
+          data.strMeasure3,
+          data.strMeasure4,
+          data.strMeasure5,
+          data.strMeasure6,
+          data.strMeasure7,
+          data.strMeasure8,
+          data.strMeasure9,
+          data.strMeasure10,
+          data.strMeasure11,
+          data.strMeasure12,
+          data.strMeasure13,
+          data.strMeasure14,
+          data.strMeasure15,
+          data.strMeasure16,
+          data.strMeasure17,
+          data.strMeasure18,
+          data.strMeasure19,
+          data.strMeasure20,
+        ]
+        recipes.push(recipe)
+      }
+      this.setState({
+        drinks: recipes
+      })
     }
-    this.setState({
-      drinks: recipes
-    })
   }
   
   render() {
