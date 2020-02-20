@@ -6,8 +6,6 @@ const IngredientsList = (props) => {
     for (var i = 0; i < 10; i++) {
         if(props.ingredients[i] !== null) {
             ingredients.push(props.ingredients[i])
-        } else {
-            ingredients.push(null)
         }
     }
     return (

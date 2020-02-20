@@ -2,18 +2,18 @@ import React from 'react';
 import { StyleSheet, View, Image, Text, TouchableHighlight } from 'react-native';
 import IngredientsList from './IngredientsList';
 
-const DrinksListing = (props) => {
-    const drink = props.drink;
+const FoodsListing = (props) => {
+    const food = props.food;
     return (
         <TouchableHighlight onPress={()=>{console.log('hi')}} style={styles.listingContainer}>
             <View style={styles.listingContainerView}>
                 <View style={styles.imageContainer}>
-                    <Image style={styles.image} source={{uri: drink.image}}></Image>
+                    <Image style={styles.image} source={{uri: food.image}}></Image>
                 </View>
                 <View style={styles.nameContainer}>
                     <View style={{height: '100%'}}>
-                        <Text style={styles.name}>{drink.name}</Text>
-                        <IngredientsList ingredients={drink.ingredients} />
+                        <Text style={styles.name}>{food.name}</Text>
+                        <IngredientsList ingredients={food.ingredients} />
                     </View>
                 </View>
             </View>
@@ -65,4 +65,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default DrinksListing;
+export default FoodsListing;
