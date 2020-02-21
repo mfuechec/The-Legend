@@ -20,7 +20,7 @@ const NewFoods = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        height: '100%',
+        height: '90%',
         width: '100%'
     },
     background: {
@@ -29,16 +29,8 @@ const styles = StyleSheet.create({
     },
     mainDisplay: {
         width: '100%',
-        height: '100%',
         display: 'flex',
         flexDirection: 'row'
-    },
-    filterContainer: {
-        width: '20%',
-        height: '75%',
-        backgroundColor: 'yellow',
-        marginLeft: '7%',
-        marginTop: '10%'
     },
     recipesContainer: {
         marginLeft: '5%',

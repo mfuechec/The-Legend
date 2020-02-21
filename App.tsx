@@ -3,9 +3,13 @@ import { NativeRouter, Route } from "react-router-native";
 import LandingPage from './components/LandingPage/LandingPage';
 import NewFood from './components/NewFood/NewFood';
 import NewDrinks from './components/NewDrinks/NewDrinks';
-import APIKeys from './passwords.config.js';
+import APIKeys from './passwords.config';
+import axios from 'axios';
 
 export default class App extends Component {
+	public state: any;
+	public setState: any;
+
   constructor() {
     super()
     this.state = {
@@ -20,22 +24,20 @@ export default class App extends Component {
   }
 
   findRecipes(selection) {
+    var fetch;
     if (selection === 'food') {
-      return fetch(APIKeys.food + 'randomselection.php')
-      .then((response) => response.json())
+      axios.get(APIKeys.food + 'randomselection.php')
       .then((response) => {
-        this.sortFoodRecipes(response.meals)
+        this.sortFoodRecipes(response)
       })
       .catch((error) => {
         console.log(error)
       })
     }
     if (selection === 'drink') {
-      return fetch(APIKeys.drink + 'randomselection.php')
-      .then((response) => response.json())
+      axios.get(APIKeys.drink + 'randomselection.php')
       .then((response) => {
-        console.log(response.drinks)
-        this.sortDrinkRecipes(response.drinks)
+        this.sortDrinkRecipes(response)
       })
       .catch((error) => {
         console.log(error)
@@ -44,10 +46,18 @@ export default class App extends Component {
   }
 
   sortFoodRecipes(datum) {
+    datum = datum.data.meals;
     if (this.state.foods.length === 0) {
       var recipes = [];
       for (var i = 0; i < datum.length; i++) {
-        var recipe = {};
+        var recipe = {
+          name: '',
+          type: '',
+          instructions: '',
+          image: '',
+          ingredients: [],
+          measurements: []
+        };
         var data = datum[i]
         recipe.name = data.strMeal;
         recipe.type = data.strCategory;
@@ -106,10 +116,18 @@ export default class App extends Component {
   }
 
   sortDrinkRecipes(datum) {
+    datum = datum.data.drinks;
     if (this.state.drinks.length === 0) {
       var recipes = [];
       for (var i = 0; i < datum.length; i++) {
-        var recipe = {};
+        var recipe = {
+          name: '',
+          type: '',
+          instructions: '',
+          image: '',
+          ingredients: [],
+          measurements: []
+        };
         var data = datum[i]
         recipe.name = data.strDrink;
         recipe.type = data.strCategory;
