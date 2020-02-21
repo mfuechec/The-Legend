@@ -8,11 +8,10 @@ const NewFoods = (props) => {
         <View style={styles.container}>
             <NavBar />
             <ImageBackground source={require('/Users/mfuechec/Desktop/RecipeBook/assets/barBackground.jpeg')} style={styles.background}>
-                <View style={styles.mainDisplay}>
                     <ScrollView style={styles.recipesContainer}>
                         <FoodsList foods={props.foods} food={props.food} />
+                        <View style={styles.refresh}></View>
                     </ScrollView>
-                </View>
             </ImageBackground>
         </View>
     )
@@ -20,7 +19,7 @@ const NewFoods = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        height: '90%',
+        height: '100%',
         width: '100%'
     },
     background: {
@@ -29,6 +28,7 @@ const styles = StyleSheet.create({
     },
     mainDisplay: {
         width: '100%',
+        height: '100%',
         display: 'flex',
         flexDirection: 'row'
     },

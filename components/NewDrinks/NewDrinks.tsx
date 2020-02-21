@@ -33,13 +33,6 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row'
     },
-    filterContainer: {
-        width: '20%',
-        height: '75%',
-        backgroundColor: 'yellow',
-        marginLeft: '7%',
-        marginTop: '10%'
-    },
     recipesContainer: {
         marginLeft: '5%',
         marginTop: '5%',

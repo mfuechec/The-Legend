@@ -24,7 +24,6 @@ export default class App extends Component {
   }
 
   findRecipes(selection) {
-    var fetch;
     if (selection === 'food') {
       axios.get(APIKeys.food + 'randomselection.php')
       .then((response) => {

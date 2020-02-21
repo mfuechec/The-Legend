@@ -23,7 +23,7 @@ const FoodsListing = (props) => {
 
 const styles = StyleSheet.create({
     listingContainer: {
-        height: '15%',
+        height: 300,
         marginBottom: '.25%'
     },
     listingContainerView: {
