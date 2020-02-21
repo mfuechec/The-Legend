@@ -10,7 +10,7 @@ const NewDrinks = (props) => {
             <ImageBackground source={require('/Users/mfuechec/Desktop/RecipeBook/assets/barBackground.jpeg')} style={styles.background}>
                 <View style={styles.mainDisplay}>
                     <ScrollView style={styles.recipesContainer}>
-                        <DrinksList drinks={props.drinks} drink={props.drink} />
+                        <DrinksList drinks={props.drinks} />
                     </ScrollView>
                 </View>
             </ImageBackground>

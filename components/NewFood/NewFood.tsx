@@ -9,8 +9,7 @@ const NewFoods = (props) => {
             <NavBar />
             <ImageBackground source={require('/Users/mfuechec/Desktop/RecipeBook/assets/barBackground.jpeg')} style={styles.background}>
                     <ScrollView style={styles.recipesContainer}>
-                        <FoodsList foods={props.foods} food={props.food} />
-                        <View style={styles.refresh}></View>
+                        <FoodsList foods={props.foods} />
                     </ScrollView>
             </ImageBackground>
         </View>
