@@ -12,8 +12,8 @@ const NavBar = (props) => {
                         Home
                     </Text>
                 </Link>
-                <View style={styles.randomButton} onPress={() => {}}>
-                    <Text style={styles.text}>
+                <View style={styles.randomButton}>
+                    <Text onPress={() => {props.findRecipes()}} style={styles.text}>
                         New Recipes
                     </Text>
                 </View>
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         borderColor: 'red',
         borderWidth: 1
     },
-    drinkButton: {
+    randomButton: {
         marginLeft: '20%',
         backgroundColor: 'white',
         width: '15%',
