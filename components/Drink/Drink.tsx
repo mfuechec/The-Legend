@@ -1,13 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, Image, Text } from 'react-native';
 import { Link } from 'react-router-native';
-import NavBar from '../NavBar/NavBar';
 
 const Drink = (props) => {
     var drink = props.drink;
     return (
         <View style={styles.container}>
-            <NavBar/>
             <View style={styles.imageContainer}>
                 <Image style={styles.image} source={{uri: drink.image}}></Image>
             </View>
@@ -72,7 +70,7 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     recipeInfo: {
-        height: '20%',
+        height: '15%',
         width: '80%',
         marginTop: '5%',
         alignItems: 'center'

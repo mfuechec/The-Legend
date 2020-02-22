@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { View, StyleSheet } from 'react-native';
 import { NativeRouter, Route } from "react-router-native";
 import LandingPage from './components/LandingPage/LandingPage';
 import NewFood from './components/NewFood/NewFood';
@@ -8,6 +9,7 @@ import Drink from './components/Drink/Drink';
 import APIKeys from './passwords.config';
 import axios from 'axios';
 import DrinkDirections from './components/Drink/DrinkDirections';
+import NavBar from './components/NavBar/NavBar';
 
 const App = props => {
 
@@ -21,7 +23,7 @@ const App = props => {
   // This function runs only once on component mount
   useEffect(() =>{
     findRecipes()
-  }, [food])
+  }, [])
 
   // This function that makes API calls to grab our 10 food and 10 drink recipes
   // This function then sends the responses on to separate functions to format for state
@@ -180,24 +182,50 @@ const App = props => {
     <NativeRouter>
       <Route
         exact path='/'
-        render={() => <LandingPage/>} />
+        render={() => <LandingPage/>}/>
       <Route
         path='/NewFood'
-        render={() => <NewFood foods={foods} setFood={setFood} />}/>
+        render={() => 
+        <View>
+          <NavBar findRecipes={findRecipes}/>
+          <NewFood foods={foods} setFood={setFood}/>
+        </View>}/>
       <Route
         path='/NewDrinks'
-        render={() => <NewDrinks drinks={drinks} setDrink={setDrink} />}/>
+        render={() =>
+          <View>
+            <NavBar findRecipes={findRecipes}/>
+            <NewDrinks drinks={drinks} setDrink={setDrink}/>
+          </View>}/>
       <Route
         path='/Food'
-        render={() => <Food food={food}/>}/>
+        render={() =>
+          <View>
+            <NavBar findRecipes={findRecipes} />
+            <Food food={food}/>
+          </View>}/>
       <Route
         path='/Drink'
-        render={() => <Drink drink={drink}/>}/>
-        <Route
+        render={() =>
+          <View>
+            <NavBar findRecipes={findRecipes}/>
+            <Drink drink={drink}/>
+          </View>}/>
+      <Route
         path='/DrinkDirections'
-        render={() => <DrinkDirections drink={drink}/>}/>
+        render={() =>
+          <View>
+            <NavBar findRecipes={findRecipes}/>
+            <DrinkDirections drink={drink}/>
+          </View>}/>
     </NativeRouter>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    height: '100%'
+  }
+})
 
 export default App;
