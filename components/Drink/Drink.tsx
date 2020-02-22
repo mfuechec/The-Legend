@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Image, Text } from 'react-native';
+import { Link } from 'react-router-native';
 import NavBar from '../NavBar/NavBar';
 
 const Drink = (props) => {
@@ -43,20 +44,16 @@ const Drink = (props) => {
                     </View>
                 </View>
             </View>
+            <View style={styles.buttonContainer}>
+                <Link style={styles.homeButton} to='/DrinkDirections'>
+                    <Text style={styles.text}>
+                        Directions
+                    </Text>
+                </Link>
+            </View>
         </View>
     )
 }
-
-/*
-{
-    name: '',
-    type: '',
-    instructions: '',
-    image: '',
-    ingredients: [],
-    measurements: []
-  }
-  */
 
 const styles = StyleSheet.create({
     container: {
@@ -75,7 +72,7 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     recipeInfo: {
-        height: '30%',
+        height: '20%',
         width: '80%',
         marginTop: '5%',
         alignItems: 'center'
@@ -99,6 +96,23 @@ const styles = StyleSheet.create({
     measurementsRight: {
         marginRight: '1%',
         marginLeft: '2.5%'
+    },
+    homeButton: {
+        backgroundColor: '#eeeeee',
+        width: '20%',
+        height: '100%',
+        borderRadius: 30,
+        justifyContent: 'center',
+        borderColor: 'red',
+        borderWidth: 1
+    },
+    text: {
+        textAlign: 'center'
+    },
+    buttonContainer: {
+        width: '100%',
+        alignItems: 'center',
+        height: '10%'
     }
 })
 

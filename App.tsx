@@ -7,6 +7,7 @@ import Food from './components/Food/Food';
 import Drink from './components/Drink/Drink';
 import APIKeys from './passwords.config';
 import axios from 'axios';
+import DrinkDirections from './components/Drink/DrinkDirections';
 
 const App = props => {
 
@@ -192,6 +193,9 @@ const App = props => {
       <Route
         path='/Drink'
         render={() => <Drink drink={drink}/>}/>
+        <Route
+        path='/DrinkDirections'
+        render={() => <DrinkDirections drink={drink}/>}/>
     </NativeRouter>
   )
 }
