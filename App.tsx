@@ -3,14 +3,27 @@ import { NativeRouter, Route } from "react-router-native";
 import LandingPage from './components/LandingPage/LandingPage';
 import NewFood from './components/NewFood/NewFood';
 import NewDrinks from './components/NewDrinks/NewDrinks';
+import Food from './components/Food/Food';
+import Drink from './components/Drink/Drink';
 import APIKeys from './passwords.config';
 import axios from 'axios';
 
 const App = props => {
 
+  // Instantiates empty state objects for food and drink recipes
   const [foods, setFoods] = useState([]);
   const [drinks, setDrinks] = useState([]);
+  const [food, setFood] = useState({});
+  const [drink, setDrink] = useState({});
 
+  // Call the function that will find 10 random recipes from both APIs
+  // This function runs only once on component mount
+  useEffect(() =>{
+    findRecipes()
+  }, [food])
+
+  // This function that makes API calls to grab our 10 food and 10 drink recipes
+  // This function then sends the responses on to separate functions to format for state
   const findRecipes = () => {
     axios.get(APIKeys.food + 'randomselection.php')
     .then((response) => {
@@ -28,6 +41,7 @@ const App = props => {
     })
   }
 
+  // This function formats the response from the food API call and puts it into state
   const sortFoodRecipes = (datum) => {
     datum = datum.data.meals;
     var recipes = [];
@@ -94,6 +108,7 @@ const App = props => {
     setFoods(recipes);
   }
 
+  // This function formats the response from the food API call and puts it into state
   const sortDrinkRecipes = (datum) => {
     datum = datum.data.drinks;
     var recipes = [];
@@ -159,10 +174,6 @@ const App = props => {
     }
     setDrinks(recipes);
   }
-
-  useEffect(() =>{
-    findRecipes()
-  }, [])
   
   return (
     <NativeRouter>
@@ -171,10 +182,16 @@ const App = props => {
         render={() => <LandingPage/>} />
       <Route
         path='/NewFood'
-        render={() => <NewFood foods={foods}/>}/>
+        render={() => <NewFood foods={foods} setFood={setFood} />}/>
       <Route
         path='/NewDrinks'
-        render={() => <NewDrinks drinks={drinks}/>}/>
+        render={() => <NewDrinks drinks={drinks} setDrink={setDrink} />}/>
+      <Route
+        path='/Food'
+        render={() => <Food food={food}/>}/>
+      <Route
+        path='/Drink'
+        render={() => <Drink drink={drink}/>}/>
     </NativeRouter>
   )
 }

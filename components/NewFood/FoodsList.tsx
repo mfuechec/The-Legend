@@ -4,7 +4,7 @@ import FoodListing from './FoodListing';
 const FoodsList = (props) => {
     const list = props.foods;
     return (
-        list.map( (food, i) => <FoodListing key={i} food={food} />)
+        list.map( (food, i) => <FoodListing setFood={props.setFood} key={i} food={food} />)
     )
 }
 

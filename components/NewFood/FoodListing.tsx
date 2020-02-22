@@ -1,22 +1,25 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text, TouchableHighlight } from 'react-native';
 import IngredientsList from './IngredientsList';
+import { Link } from 'react-router-native';
 
 const FoodsListing = (props) => {
     const food = props.food;
     return (
-        <TouchableHighlight onPress={()=>{console.log('hi')}} style={styles.listingContainer}>
-            <View style={styles.listingContainerView}>
-                <View style={styles.imageContainer}>
-                    <Image style={styles.image} source={{uri: food.image}}></Image>
-                </View>
-                <View style={styles.nameContainer}>
-                    <View style={{height: '100%'}}>
-                        <Text style={styles.name}>{food.name}</Text>
-                        <IngredientsList ingredients={food.ingredients} />
+        <TouchableHighlight style={styles.listingContainer}>
+            <Link to='/Food' onPress={() => {props.setFood(food)}}>
+                <View style={styles.listingContainerView}>
+                    <View style={styles.imageContainer}>
+                        <Image style={styles.image} source={{uri: food.image}}></Image>
+                    </View>
+                    <View style={styles.nameContainer}>
+                        <View style={{height: '100%'}}>
+                            <Text style={styles.name}>{food.name}</Text>
+                            <IngredientsList ingredients={food.ingredients} />
+                        </View>
                     </View>
                 </View>
-            </View>
+            </Link>
         </TouchableHighlight>
     )
 }
