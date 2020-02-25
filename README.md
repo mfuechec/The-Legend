@@ -15,11 +15,11 @@ Then run the app in your expo ios simulator.
 
 # In Action
 ---
-![Landing.png](/Users/mfuechec/Desktop/RecipeBook/assets/Landing.png)
+![](https://github.com/mfuechec/RecipeBook/blob/master/assets/Landing.png)
 
-![RecipeList.png](/Users/mfuechec/Desktop/RecipeBook/assets/RecipeList.png)
+![](https://github.com/mfuechec/RecipeBook/blob/master/assets/RecipeList.png)
 
-![Recipe.png](/Users/mfuechec/Desktop/RecipeBook/assets/Recipe.png)
+![](https://github.com/mfuechec/RecipeBook/blob/master/assets/Recipe.png)
 
 # Stack
 ---
