@@ -4,7 +4,12 @@ import { View, Text, StyleSheet } from 'react-native';
 const DrinkDirections = props => {
     return (
         <View style={styles.container}>
-            <Text>Hello</Text>
+            <Text>{props.drink.name}</Text>
+            <Text>{props.drink.type}</Text>
+            <Text>{props.drink.instructions}</Text>
+            <Text>{props.drink.image}</Text>
+            <Text>{props.drink.ingredients}</Text>
+            <Text>{props.drink.measurements}</Text>
         </View>
     )
 }

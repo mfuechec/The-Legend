@@ -42,12 +42,8 @@ const Drink = (props) => {
                     </View>
                 </View>
             </View>
-            <View style={styles.buttonContainer}>
-                <Link style={styles.homeButton} to='/DrinkDirections'>
-                    <Text style={styles.text}>
-                        Directions
-                    </Text>
-                </Link>
+            <View style={styles.instructionContainer}>
+                <Text>{drink.instructions}</Text>
             </View>
         </View>
     )
@@ -95,19 +91,7 @@ const styles = StyleSheet.create({
         marginRight: '1%',
         marginLeft: '2.5%'
     },
-    homeButton: {
-        backgroundColor: '#eeeeee',
-        width: '20%',
-        height: '100%',
-        borderRadius: 30,
-        justifyContent: 'center',
-        borderColor: 'red',
-        borderWidth: 1
-    },
-    text: {
-        textAlign: 'center'
-    },
-    buttonContainer: {
+    instructionContainer: {
         width: '100%',
         alignItems: 'center',
         height: '10%'
