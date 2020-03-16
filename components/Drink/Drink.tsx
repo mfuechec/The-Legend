@@ -7,7 +7,7 @@ const Drink = (props) => {
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
-                <Image style={styles.image} source={{uri: drink.image}}></Image>
+                <Image style={styles.image} source={{ uri: drink.image }}></Image>
             </View>
             <View style={styles.recipeInfo}>
                 <Text style={styles.name}>{drink.name}</Text>
@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#FF8966'
     },
     imageContainer: {
         height: '50%',
