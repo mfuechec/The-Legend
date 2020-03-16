@@ -1,3 +1,5 @@
+# Recipe Book
+
 Are you one of those people who likes to both eat and drink? Then Recipe Book is the app you've been waiting for your whole life.
 
 Recipe Book puts everything you need to create fabulous cocktails and scrumptious meals at your fingertips, and, if your fingertips are too busy creating, Recipe Book will soon respond to voice commands.
@@ -15,11 +17,11 @@ Then run the app in your expo ios simulator.
 
 # In Action
 ---
-![Landing.png](/Users/mfuechec/Desktop/RecipeBook/assets/Landing.png)
+![](https://github.com/mfuechec/RecipeBook/blob/master/assets/Landing.png)
 
-![RecipeList.png](/Users/mfuechec/Desktop/RecipeBook/assets/RecipeList.png)
+![](https://github.com/mfuechec/RecipeBook/blob/master/assets/RecipeList.png)
 
-![Recipe.png](/Users/mfuechec/Desktop/RecipeBook/assets/Recipe.png)
+![](https://github.com/mfuechec/RecipeBook/blob/master/assets/Recipe.png)
 
 # Stack
 ---
