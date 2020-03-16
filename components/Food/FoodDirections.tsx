@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, ScrollView } from 'react-native';
 
 const FoodDirections = props => {
     var instructionList = props.food.instructions.split('.');
@@ -7,28 +7,32 @@ const FoodDirections = props => {
     instructionList.map((item, i) => {
         if (item.length !== 0) {
             instructionList[i] = item.trim();
-            instructions.push(<Text style={styles.step}>Step {i + 1}: {instructionList[i]}</Text>);
+            instructions.push(<Text style={styles.step}>Step {i + 1}: {instructionList[i]}.</Text>);
         }
     })
     return (
-        <View style={styles.container}>
-            {instructions}
-        </View>
+        <ScrollView style={styles.scrollView}>
+            <View style={styles.view}>
+                {instructions}
+            </View>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
+    view: {
         height: '100%',
         width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        backgroundColor: 'grey'
+        alignItems: 'center'
     },
     step: {
         marginTop: '5%',
         fontSize: 25
+    },
+    scrollView: {
+        height: '100%',
+        width: '100%',
+        backgroundColor: '#EEEEEE'
     }
 })
 

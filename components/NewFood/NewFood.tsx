@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, ImageBackground } from 'react-native';
+import { StyleSheet, ScrollView, ImageBackground } from 'react-native';
 import FoodsList from './FoodsList';
 
 const NewFoods = (props) => {
