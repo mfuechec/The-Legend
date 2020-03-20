@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { NativeRouter, Route } from "react-router-native";
 import LandingPage from './components/LandingPage/LandingPage';
@@ -11,6 +11,7 @@ import axios from 'axios';
 import DrinkDirections from './components/Drink/DrinkDirections';
 import FoodDirections from './components/Food/FoodDirections';
 import NavBar from './components/NavBar/NavBar';
+import Sort from './components/NavBar/Sort';
 
 const App = props => {
 
@@ -19,10 +20,11 @@ const App = props => {
   const [drinks, setDrinks] = useState([]);
   const [food, setFood] = useState({});
   const [drink, setDrink] = useState({});
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   // Call the function that will find 10 random recipes from both APIs
   // This function runs only once on component mount
-  useEffect(() =>{
+  useEffect(() => {
     findRecipes()
   }, [])
 
@@ -30,19 +32,19 @@ const App = props => {
   // This function then sends the responses on to separate functions to format for state
   const findRecipes = () => {
     axios.get(APIKeys.food + 'randomselection.php')
-    .then((response) => {
-      sortFoodRecipes(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+      .then((response) => {
+        sortFoodRecipes(response)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
     axios.get(APIKeys.drink + 'randomselection.php')
-    .then((response) => {
-      sortDrinkRecipes(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+      .then((response) => {
+        sortDrinkRecipes(response)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   // This function formats the response from the food API call and puts it into state
@@ -178,54 +180,66 @@ const App = props => {
     }
     setDrinks(recipes);
   }
-  
+
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible);
+  }
+
+  // if (isModalVisible) {
+  //   return (
+  //     <View style={styles.sortModal} >
+  //       <Sort />
+  //     </View>
+  //   )
+  // }
+
   return (
     <NativeRouter>
       <Route
         exact path='/'
-        render={() => <LandingPage/>}/>
+        render={() => <LandingPage />} />
       <Route
         path='/NewFood'
-        render={() => 
-        <View>
-          <NavBar findRecipes={findRecipes}/>
-          <NewFood foods={foods} setFood={setFood}/>
-        </View>}/>
+        render={() =>
+          <View>
+            <NavBar findRecipes={findRecipes} toggleModal={toggleModal} />
+            <NewFood foods={foods} setFood={setFood} />
+          </View>} />
       <Route
         path='/NewDrinks'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes}/>
-            <NewDrinks drinks={drinks} setDrink={setDrink}/>
-          </View>}/>
+            <NavBar findRecipes={findRecipes} toggleModal={toggleModal} />
+            <NewDrinks drinks={drinks} setDrink={setDrink} />
+          </View>} />
       <Route
         path='/Food'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes} />
-            <Food food={food}/>
-          </View>}/>
+            <NavBar findRecipes={findRecipes} toggleModal={toggleModal} />
+            <Food food={food} />
+          </View>} />
       <Route
         path='/Drink'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes}/>
-            <Drink drink={drink}/>
-          </View>}/>
+            <NavBar findRecipes={findRecipes} toggleModal={toggleModal} />
+            <Drink drink={drink} />
+          </View>} />
       <Route
         path='/DrinkDirections'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes}/>
-            <DrinkDirections drink={drink}/>
-          </View>}/>
+            <NavBar findRecipes={findRecipes} toggleModal={toggleModal} />
+            <DrinkDirections drink={drink} />
+          </View>} />
       <Route
         path='/FoodDirections'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes}/>
-            <FoodDirections food={food}/>
-          </View>}/>
+            <NavBar findRecipes={findRecipes} toggleModal={toggleModal} />
+            <FoodDirections food={food} />
+          </View>} />
     </NativeRouter>
   )
 }
@@ -233,6 +247,10 @@ const App = props => {
 const styles = StyleSheet.create({
   container: {
     height: '100%'
+  },
+  sortModal: {
+    height: '50%',
+    width: '50%'
   }
 })
 

@@ -17,6 +17,11 @@ const NavBar = (props) => {
                         New Recipes
                     </Text>
                 </View>
+                <View style={styles.sortList}>
+                    <Text onPress={() => { props.toggleModal() }} style={styles.text}>
+                        Sort
+                    </Text>
+                </View>
             </View>
         </View>
     )
@@ -36,8 +41,8 @@ const styles = StyleSheet.create({
         marginBottom: '.5%'
     },
     homeButton: {
-        marginLeft: '15%',
-        marginRight: '20%',
+        marginLeft: '10%',
+        marginRight: '15%',
         backgroundColor: 'white',
         width: '15%',
         height: '74%',
@@ -47,7 +52,17 @@ const styles = StyleSheet.create({
         borderWidth: 1
     },
     randomButton: {
-        marginLeft: '20%',
+        marginLeft: '2.5%',
+        backgroundColor: 'white',
+        width: '15%',
+        height: '74%',
+        borderRadius: 25,
+        justifyContent: 'center',
+        borderColor: 'red',
+        borderWidth: 1
+    },
+    sortList: {
+        marginLeft: '17.5%',
         backgroundColor: 'white',
         width: '15%',
         height: '74%',
