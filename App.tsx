@@ -30,21 +30,23 @@ const App = props => {
 
   // This function that makes API calls to grab our 10 food and 10 drink recipes
   // This function then sends the responses on to separate functions to format for state
-  const findRecipes = () => {
-    axios.get(APIKeys.food + 'randomselection.php')
-      .then((response) => {
-        sortFoodRecipes(response)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-    axios.get(APIKeys.drink + 'randomselection.php')
-      .then((response) => {
-        sortDrinkRecipes(response)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+  const manageAPICalls = {
+    findRandomRecipes: () => {
+      axios.get(APIKeys.food + 'randomselection.php')
+        .then((response) => {
+          sortFoodRecipes(response)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+      axios.get(APIKeys.drink + 'randomselection.php')
+        .then((response) => {
+          sortDrinkRecipes(response)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
   }
 
   // This function formats the response from the food API call and puts it into state
@@ -195,48 +197,55 @@ const App = props => {
       <Route
         exact path='/'
         render={() => <LandingPage />} />
+
       <Route
         path='/NewFood'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes} openModal={manageModal.openModal} />
+            <NavBar findRandomRecipes={manageAPICalls.findRandomRecipes} openModal={manageModal.openModal} />
             <NewFood foods={foods} setFood={setFood} />
           </View>} />
+
       <Route
         path='/NewDrinks'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes} openModal={manageModal.openModal} />
+            <NavBar findRandomRecipes={manageAPICalls.findRandomRecipes} openModal={manageModal.openModal} />
             <NewDrinks drinks={drinks} setDrink={setDrink} />
           </View>} />
+
       <Route
         path='/Food'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes} openModal={manageModal.openModal} />
+            <NavBar findRandomRecipes={manageAPICalls.findRandomRecipes} openModal={manageModal.openModal} />
             <Food food={food} />
           </View>} />
+
       <Route
         path='/Drink'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes} openModal={manageModal.openModal} />
+            <NavBar findRandomRecipes={manageAPICalls.findRandomRecipes} openModal={manageModal.openModal} />
             <Drink drink={drink} />
           </View>} />
+
       <Route
         path='/DrinkDirections'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes} openModal={manageModal.openModal} />
+            <NavBar findRandomRecipes={manageAPICalls.findRandomRecipes} openModal={manageModal.openModal} />
             <DrinkDirections drink={drink} />
           </View>} />
+
       <Route
         path='/FoodDirections'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes} openModal={manageModal.openModal} />
+            <NavBar findRandomRecipes={manageAPICalls.findRandomRecipes} openModal={manageModal.openModal} />
             <FoodDirections food={food} />
           </View>} />
+
     </NativeRouter>
   )
 

@@ -12,7 +12,7 @@ const NavBar = (props) => {
                         Home
                     </Text>
                 </Link>
-                <TouchableHighlight onPress={() => { props.findRecipes() }} style={styles.randomButton}>
+                <TouchableHighlight onPress={() => { props.findRandomRecipes() }} style={styles.randomButton}>
                     <Text style={styles.text}>
                         New Recipes
                     </Text>
