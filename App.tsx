@@ -11,7 +11,7 @@ import axios from 'axios';
 import DrinkDirections from './components/Drink/DrinkDirections';
 import FoodDirections from './components/Food/FoodDirections';
 import NavBar from './components/NavBar/NavBar';
-import Sort from './components/NavBar/Sort';
+import Sort from './components/Sort/Sort';
 
 const App = props => {
 
@@ -181,20 +181,17 @@ const App = props => {
     setDrinks(recipes);
   }
 
-  const toggleModal = () => {
-    setIsModalVisible(!isModalVisible);
+  // This object contains functions for interacting with the sort form modal
+  const manageModal = {
+    openModal: () => { setIsModalVisible(true) },
+    closeModal: () => { setIsModalVisible(false) },
+    searchFoods: () => { },
+    searchDrinks: () => { }
   }
-
-  // if (isModalVisible) {
-  //   return (
-  //     <View style={styles.sortModal} >
-  //       <Sort />
-  //     </View>
-  //   )
-  // }
 
   return (
     <NativeRouter>
+      <Sort isModalVisible={isModalVisible} closeModal={manageModal.closeModal} searchFoods={manageModal.searchFoods} searchDrinks={manageModal.searchDrinks} />
       <Route
         exact path='/'
         render={() => <LandingPage />} />
@@ -202,53 +199,54 @@ const App = props => {
         path='/NewFood'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes} toggleModal={toggleModal} />
+            <NavBar findRecipes={findRecipes} openModal={manageModal.openModal} />
             <NewFood foods={foods} setFood={setFood} />
           </View>} />
       <Route
         path='/NewDrinks'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes} toggleModal={toggleModal} />
+            <NavBar findRecipes={findRecipes} openModal={manageModal.openModal} />
             <NewDrinks drinks={drinks} setDrink={setDrink} />
           </View>} />
       <Route
         path='/Food'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes} toggleModal={toggleModal} />
+            <NavBar findRecipes={findRecipes} openModal={manageModal.openModal} />
             <Food food={food} />
           </View>} />
       <Route
         path='/Drink'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes} toggleModal={toggleModal} />
+            <NavBar findRecipes={findRecipes} openModal={manageModal.openModal} />
             <Drink drink={drink} />
           </View>} />
       <Route
         path='/DrinkDirections'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes} toggleModal={toggleModal} />
+            <NavBar findRecipes={findRecipes} openModal={manageModal.openModal} />
             <DrinkDirections drink={drink} />
           </View>} />
       <Route
         path='/FoodDirections'
         render={() =>
           <View>
-            <NavBar findRecipes={findRecipes} toggleModal={toggleModal} />
+            <NavBar findRecipes={findRecipes} openModal={manageModal.openModal} />
             <FoodDirections food={food} />
           </View>} />
     </NativeRouter>
   )
+
 }
 
 const styles = StyleSheet.create({
   container: {
     height: '100%'
   },
-  sortModal: {
+  sortModalContainer: {
     height: '50%',
     width: '50%'
   }

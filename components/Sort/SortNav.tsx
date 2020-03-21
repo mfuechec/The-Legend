@@ -2,25 +2,21 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { Link } from 'react-router-native';
 
-const NavBar = (props) => {
+const SortNav = (props) => {
     return (
-        <View style={styles.NavBar} >
-            <View style={styles.upperBorder}></View>
-            <View style={styles.buttonContainer}>
-                <Link style={styles.homeButton} to='/'>
+        <View style={styles.NavBar}>
+            <View style={styles.sortHeader}></View>
+            <View style={styles.sortButtonContainer}>
+                <TouchableHighlight style={styles.homeButton} onPress={() => { props.closeModal() }}>
                     <Text style={styles.text}>
                         Home
                     </Text>
-                </Link>
-                <TouchableHighlight onPress={() => { props.findRecipes() }} style={styles.randomButton}>
-                    <Text style={styles.text}>
-                        New Recipes
-                    </Text>
                 </TouchableHighlight>
-                <TouchableHighlight onPress={() => { props.openModal() }} style={styles.sortList}>
-                    <Text style={styles.text}>
-                        Sort
-                    </Text>
+                <TouchableHighlight style={styles.searchFoodsButton} onPress={() => { props.searchFoods() }}>
+                    <Text style={styles.text}>Search Foods</Text>
+                </TouchableHighlight>
+                <TouchableHighlight style={styles.searchDrinksButton} onPress={() => { props.searchDrinks() }}>
+                    <Text style={styles.text}>Search Drinks</Text>
                 </TouchableHighlight>
             </View>
         </View>
@@ -29,16 +25,16 @@ const NavBar = (props) => {
 
 const styles = StyleSheet.create({
     NavBar: {
-        width: '100%',
-        height: '10%',
-        backgroundColor: '#2A2B2A',
-        display: 'flex'
+        height: '100%',
+        width: '100%'
     },
-    upperBorder: {
-        height: '15%',
-        width: '100%',
-        backgroundColor: '#2A2B2A',
-        marginBottom: '.5%'
+    sortHeader: {
+        height: '15%'
+    },
+    sortButtonContainer: {
+        height: '85%',
+        display: 'flex',
+        flexDirection: 'row'
     },
     homeButton: {
         marginLeft: '10%',
@@ -51,8 +47,9 @@ const styles = StyleSheet.create({
         borderColor: 'red',
         borderWidth: 1
     },
-    randomButton: {
+    searchFoodsButton: {
         marginLeft: '2.5%',
+        marginRight: '15%',
         backgroundColor: 'white',
         width: '15%',
         height: '74%',
@@ -61,8 +58,9 @@ const styles = StyleSheet.create({
         borderColor: 'red',
         borderWidth: 1
     },
-    sortList: {
-        marginLeft: '17.5%',
+    searchDrinksButton: {
+        marginLeft: '2.5%',
+        marginRight: '15%',
         backgroundColor: 'white',
         width: '15%',
         height: '74%',
@@ -70,14 +68,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderColor: 'red',
         borderWidth: 1
-    },
-    buttonContainer: {
-        flexDirection: 'row',
-        height: '80%'
     },
     text: {
         textAlign: 'center'
     }
 })
 
-export default NavBar;
+export default SortNav;
