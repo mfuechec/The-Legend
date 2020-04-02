@@ -21,6 +21,7 @@ const App = props => {
   const [food, setFood] = useState({});
   const [drink, setDrink] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [whatIsSelected, setWhatIsSelected] = useState('food');
 
   // Call the function that will find 10 random recipes from both APIs
   // This function runs only once on component mount
@@ -46,6 +47,12 @@ const App = props => {
         .catch((error) => {
           console.log(error)
         })
+    },
+    searchFoods: () => {
+
+    },
+    searchDrinks: () => {
+
     }
   }
 
@@ -187,13 +194,13 @@ const App = props => {
   const manageModal = {
     openModal: () => { setIsModalVisible(true) },
     closeModal: () => { setIsModalVisible(false) },
-    searchFoods: () => { },
-    searchDrinks: () => { }
+    searchFoods: () => { setWhatIsSelected('food') },
+    searchDrinks: () => { setWhatIsSelected('drinks') }
   }
 
   return (
     <NativeRouter>
-      <Sort isModalVisible={isModalVisible} closeModal={manageModal.closeModal} searchFoods={manageModal.searchFoods} searchDrinks={manageModal.searchDrinks} />
+      <Sort whatIsSelected={whatIsSelected} isModalVisible={isModalVisible} manageAPICalls={manageAPICalls} manageModal={manageModal} />
       <Route
         exact path='/'
         render={() => <LandingPage />} />

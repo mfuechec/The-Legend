@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const SearchByName = (props) => {
-    return(
+    return (
         <View>
-            <Text>Hi there</Text>
+            <Text>{props.whatIsSelected}</Text>
         </View>
     )
 }

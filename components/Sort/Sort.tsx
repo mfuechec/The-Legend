@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Modal from 'react-native-modal';
 import SortNav from './SortNav';
 import SearchByName from './SearchByName';
@@ -19,22 +19,22 @@ const Sort = (props) => {
         >
             <View style={styles.sortContainer}>
                 <View style={styles.sortNav}>
-                    <SortNav closeModal={props.closeModal} />
+                    <SortNav manageAPICalls={props.manageAPICalls} manageModal={props.manageModal} />
                 </View>
                 <View style={styles.searchByName}>
-                    <SearchByName />
+                    <SearchByName whatIsSelected={props.whatIsSelected} />
                 </View>
                 <View style={styles.searchByCategory}>
-                    <SearchByCategory />
+                    <SearchByCategory whatIsSelected={props.whatIsSelected} />
                 </View>
                 <View style={styles.searchByArea}>
-                    <SearchByArea />
+                    <SearchByArea whatIsSelected={props.whatIsSelected} />
                 </View>
                 <View style={styles.searchByIngredients}>
-                    <SearchByIngredients />
+                    <SearchByIngredients whatIsSelected={props.whatIsSelected} />
                 </View>
                 <View style={styles.latestMeals}>
-                    <LatestMeals />
+                    <LatestMeals whatIsSelected={props.whatIsSelected} />
                 </View>
             </View>
         </Modal>

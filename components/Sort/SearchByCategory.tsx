@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const SearchByCategory = (props) => {
     return (
         <View>
-            <Text>Hi there</Text>
+            <Text>{props.whatIsSelected}</Text>
         </View>
     )
 }

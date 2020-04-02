@@ -7,16 +7,20 @@ const SortNav = (props) => {
         <View style={styles.NavBar}>
             <View style={styles.sortHeader}></View>
             <View style={styles.sortButtonContainer}>
-                <TouchableHighlight style={styles.homeButton} onPress={() => { props.closeModal() }}>
+                <TouchableHighlight style={styles.homeButton} onPress={() => { props.manageModal.closeModal() }}>
                     <Text style={styles.text}>
-                        Home
+                        Close
                     </Text>
                 </TouchableHighlight>
-                <TouchableHighlight style={styles.searchFoodsButton} onPress={() => { props.searchFoods() }}>
-                    <Text style={styles.text}>Search Foods</Text>
+                <TouchableHighlight style={styles.searchFoodsButton}>
+                    <Link onPress={props.manageModal.searchFoods} to='/NewFood'>
+                        <Text style={styles.text}>Search Foods</Text>
+                    </Link>
                 </TouchableHighlight>
-                <TouchableHighlight style={styles.searchDrinksButton} onPress={() => { props.searchDrinks() }}>
-                    <Text style={styles.text}>Search Drinks</Text>
+                <TouchableHighlight style={styles.searchDrinksButton}>
+                    <Link onPress={props.manageModal.searchDrinks} to='/NewDrinks'>
+                        <Text style={styles.text}>Search Drinks</Text>
+                    </Link>
                 </TouchableHighlight>
             </View>
         </View>
