@@ -1972,7 +1972,7 @@ const SearchByIngredients = (props) => {
         <View style={styles.inputContainer}>
             <Text style={styles.text}>Search for recipes by main ingredient.</Text>
             <Dropdown
-                onChangeText={(value) => { props.manageAPICalls.searchByName(value) }}
+                onChangeText={(value) => { props.manageAPICalls.searchByIngredient(value) }}
                 style={styles.dropdown}
                 label='Select main ingredient'
                 data={selection}

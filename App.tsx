@@ -36,14 +36,14 @@ const App = (props) => {
     findRandomRecipes: () => {
       axios.get(APIKeys.food + 'randomselection.php')
         .then((response) => {
-          sortFoodRecipes(response)
+          sortAPIResponse.sortFoodRecipes(response.data.meals)
         })
         .catch((error) => {
           console.log(error)
         })
       axios.get(APIKeys.drink + 'randomselection.php')
         .then((response) => {
-          sortDrinkRecipes(response)
+          sortAPIResponse.sortDrinkRecipes(response.data.drinks)
         })
         .catch((error) => {
           console.log(error)
@@ -53,7 +53,7 @@ const App = (props) => {
       if (whatIsSelected === 'food') {
         axios.get(APIKeys.food + 'search.php?s=' + searchText)
           .then((response) => {
-            sortFoodRecipes(response);
+            sortAPIResponse.sortFoodRecipes(response);
             manageModal.closeModal();
           })
           .catch((error) => {
@@ -63,7 +63,7 @@ const App = (props) => {
       if (whatIsSelected === 'drinks') {
         axios.get(APIKeys.drink + 'search.php?s=' + searchText)
           .then((response) => {
-            sortDrinkRecipes(response);
+            sortAPIResponse.sortDrinkRecipes(response);
             manageModal.closeModal();
           })
           .catch((error) => {
@@ -71,11 +71,11 @@ const App = (props) => {
           })
       }
     },
-    searchByIngredients: (ingredient) => {
+    searchByIngredient: (ingredient) => {
       if (whatIsSelected === 'food') {
         axios.get(APIKeys.food + 'filter.php?i=' + ingredient)
           .then((response) => {
-            sortFoodRecipes(response);
+            sortAPIResponse.sortFoodRecipesByIngredient(response.data.meals);
             manageModal.closeModal();
           })
           .catch((error) => {
@@ -85,7 +85,29 @@ const App = (props) => {
       if (whatIsSelected === 'drinks') {
         axios.get(APIKeys.drink + 'filter.php?i=' + ingredient)
           .then((response) => {
-            sortFoodRecipes(response);
+            sortAPIResponse.sortDrinkRecipesByIngredient(response.data.drinks);
+            manageModal.closeModal();
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+    },
+    searchByCategory: (category) => {
+      if (whatIsSelected === 'food') {
+        axios.get(APIKeys.food + 'filter.php?c=' + category)
+          .then((response) => {
+            sortAPIResponse.sortFoodRecipesByCategory(response);
+            manageModal.closeModal();
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+      if (whatIsSelected === 'drinks') {
+        axios.get(APIKeys.drink + 'filter.php?c=' + category)
+          .then((response) => {
+            sortAPIResponse.sortDrinkRecipesByCategory(response);
             manageModal.closeModal();
           })
           .catch((error) => {
@@ -96,137 +118,205 @@ const App = (props) => {
   }
 
   // This function formats the response from the food API call and puts it into state
-  const sortFoodRecipes = (datum) => {
-    datum = datum.data.meals;
-    var recipes = [];
-    for (var i = 0; i < datum.length; i++) {
-      var recipe = {
-        name: '',
-        type: '',
-        instructions: '',
-        image: '',
-        ingredients: [],
-        measurements: []
-      };
-      var data = datum[i]
-      recipe.name = data.strMeal;
-      recipe.type = data.strCategory;
-      recipe.instructions = data.strInstructions;
-      recipe.image = data.strMealThumb;
-      recipe.ingredients = [
-        data.strIngredient1,
-        data.strIngredient2,
-        data.strIngredient3,
-        data.strIngredient4,
-        data.strIngredient5,
-        data.strIngredient6,
-        data.strIngredient7,
-        data.strIngredient8,
-        data.strIngredient9,
-        data.strIngredient10,
-        data.strIngredient11,
-        data.strIngredient12,
-        data.strIngredient13,
-        data.strIngredient14,
-        data.strIngredient15,
-        data.strIngredient16,
-        data.strIngredient17,
-        data.strIngredient18,
-        data.strIngredient19,
-        data.strIngredient20,
-      ]
-      recipe.measurements = [
-        data.strMeasure1,
-        data.strMeasure2,
-        data.strMeasure3,
-        data.strMeasure4,
-        data.strMeasure5,
-        data.strMeasure6,
-        data.strMeasure7,
-        data.strMeasure8,
-        data.strMeasure9,
-        data.strMeasure10,
-        data.strMeasure11,
-        data.strMeasure12,
-        data.strMeasure13,
-        data.strMeasure14,
-        data.strMeasure15,
-        data.strMeasure16,
-        data.strMeasure17,
-        data.strMeasure18,
-        data.strMeasure19,
-        data.strMeasure20,
-      ]
-      recipes.push(recipe)
-    }
-    setFoods(recipes);
-  }
+  const sortAPIResponse = {
+    sortFoodRecipes: (datum) => {
+      var recipes = [];
+      for (var i = 0; i < datum.length; i++) {
+        var recipe = {
+          name: '',
+          type: '',
+          instructions: '',
+          image: '',
+          ingredients: [],
+          measurements: []
+        };
+        var data = datum[i]
+        recipe.name = data.strMeal;
+        recipe.type = data.strCategory;
+        recipe.instructions = data.strInstructions;
+        recipe.image = data.strMealThumb;
+        recipe.ingredients = [
+          data.strIngredient1,
+          data.strIngredient2,
+          data.strIngredient3,
+          data.strIngredient4,
+          data.strIngredient5,
+          data.strIngredient6,
+          data.strIngredient7,
+          data.strIngredient8,
+          data.strIngredient9,
+          data.strIngredient10,
+          data.strIngredient11,
+          data.strIngredient12,
+          data.strIngredient13,
+          data.strIngredient14,
+          data.strIngredient15,
+          data.strIngredient16,
+          data.strIngredient17,
+          data.strIngredient18,
+          data.strIngredient19,
+          data.strIngredient20,
+        ]
+        recipe.measurements = [
+          data.strMeasure1,
+          data.strMeasure2,
+          data.strMeasure3,
+          data.strMeasure4,
+          data.strMeasure5,
+          data.strMeasure6,
+          data.strMeasure7,
+          data.strMeasure8,
+          data.strMeasure9,
+          data.strMeasure10,
+          data.strMeasure11,
+          data.strMeasure12,
+          data.strMeasure13,
+          data.strMeasure14,
+          data.strMeasure15,
+          data.strMeasure16,
+          data.strMeasure17,
+          data.strMeasure18,
+          data.strMeasure19,
+          data.strMeasure20,
+        ]
+        recipes.push(recipe)
+      }
+      setFoods(recipes);
+    },
+    sortDrinkRecipes: (datum) => {
+      var recipes = [];
+      for (var i = 0; i < datum.length; i++) {
+        var recipe = {
+          name: '',
+          type: '',
+          instructions: '',
+          image: '',
+          ingredients: [],
+          measurements: []
+        };
+        var data = datum[i]
+        recipe.name = data.strDrink;
+        recipe.type = data.strCategory;
+        recipe.instructions = data.strInstructions;
+        recipe.image = data.strDrinkThumb;
+        recipe.ingredients = [
+          data.strIngredient1,
+          data.strIngredient2,
+          data.strIngredient3,
+          data.strIngredient4,
+          data.strIngredient5,
+          data.strIngredient6,
+          data.strIngredient7,
+          data.strIngredient8,
+          data.strIngredient9,
+          data.strIngredient10,
+          data.strIngredient11,
+          data.strIngredient12,
+          data.strIngredient13,
+          data.strIngredient14,
+          data.strIngredient15,
+          data.strIngredient16,
+          data.strIngredient17,
+          data.strIngredient18,
+          data.strIngredient19,
+          data.strIngredient20,
+        ]
+        recipe.measurements = [
+          data.strMeasure1,
+          data.strMeasure2,
+          data.strMeasure3,
+          data.strMeasure4,
+          data.strMeasure5,
+          data.strMeasure6,
+          data.strMeasure7,
+          data.strMeasure8,
+          data.strMeasure9,
+          data.strMeasure10,
+          data.strMeasure11,
+          data.strMeasure12,
+          data.strMeasure13,
+          data.strMeasure14,
+          data.strMeasure15,
+          data.strMeasure16,
+          data.strMeasure17,
+          data.strMeasure18,
+          data.strMeasure19,
+          data.strMeasure20,
+        ]
+        recipes.push(recipe)
+      }
+      setDrinks(recipes);
+    },
+    sortFoodRecipesByIngredient: (datum) => {
+      let newDatum = [];
 
-  // This function formats the response from the food API call and puts it into state
-  const sortDrinkRecipes = (datum) => {
-    datum = datum.data.drinks;
-    var recipes = [];
-    for (var i = 0; i < datum.length; i++) {
-      var recipe = {
-        name: '',
-        type: '',
-        instructions: '',
-        image: '',
-        ingredients: [],
-        measurements: []
-      };
-      var data = datum[i]
-      recipe.name = data.strDrink;
-      recipe.type = data.strCategory;
-      recipe.instructions = data.strInstructions;
-      recipe.image = data.strDrinkThumb;
-      recipe.ingredients = [
-        data.strIngredient1,
-        data.strIngredient2,
-        data.strIngredient3,
-        data.strIngredient4,
-        data.strIngredient5,
-        data.strIngredient6,
-        data.strIngredient7,
-        data.strIngredient8,
-        data.strIngredient9,
-        data.strIngredient10,
-        data.strIngredient11,
-        data.strIngredient12,
-        data.strIngredient13,
-        data.strIngredient14,
-        data.strIngredient15,
-        data.strIngredient16,
-        data.strIngredient17,
-        data.strIngredient18,
-        data.strIngredient19,
-        data.strIngredient20,
-      ]
-      recipe.measurements = [
-        data.strMeasure1,
-        data.strMeasure2,
-        data.strMeasure3,
-        data.strMeasure4,
-        data.strMeasure5,
-        data.strMeasure6,
-        data.strMeasure7,
-        data.strMeasure8,
-        data.strMeasure9,
-        data.strMeasure10,
-        data.strMeasure11,
-        data.strMeasure12,
-        data.strMeasure13,
-        data.strMeasure14,
-        data.strMeasure15,
-        data.strMeasure16,
-        data.strMeasure17,
-        data.strMeasure18,
-        data.strMeasure19,
-        data.strMeasure20,
-      ]
-      recipes.push(recipe)
+      Promise.all([
+        axios.get(APIKeys.food + 'lookup.php?i=' + datum[0].idMeal),
+        axios.get(APIKeys.food + 'lookup.php?i=' + datum[1].idMeal),
+        axios.get(APIKeys.food + 'lookup.php?i=' + datum[2].idMeal),
+        axios.get(APIKeys.food + 'lookup.php?i=' + datum[3].idMeal),
+        axios.get(APIKeys.food + 'lookup.php?i=' + datum[4].idMeal),
+        axios.get(APIKeys.food + 'lookup.php?i=' + datum[5].idMeal),
+        axios.get(APIKeys.food + 'lookup.php?i=' + datum[6].idMeal),
+        axios.get(APIKeys.food + 'lookup.php?i=' + datum[7].idMeal),
+        axios.get(APIKeys.food + 'lookup.php?i=' + datum[8].idMeal),
+        axios.get(APIKeys.food + 'lookup.php?i=' + datum[9].idMeal),
+      ])
+        .then(([one, two, three, four, five, six, seven, eight, nine, ten]) => {
+          newDatum.push(one.data.meals[0]);
+          newDatum.push(two.data.meals[0]);
+          newDatum.push(three.data.meals[0]);
+          newDatum.push(four.data.meals[0]);
+          newDatum.push(five.data.meals[0]);
+          newDatum.push(six.data.meals[0]);
+          newDatum.push(seven.data.meals[0]);
+          newDatum.push(eight.data.meals[0]);
+          newDatum.push(nine.data.meals[0]);
+          newDatum.push(ten.data.meals[0]);
+          sortAPIResponse.sortFoodRecipes(newDatum);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    },
+    sortDrinkRecipesByIngredient: (datum) => {
+      let newDatum = [];
+
+      Promise.all([
+        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[0].idDrink),
+        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[1].idDrink),
+        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[2].idDrink),
+        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[3].idDrink),
+        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[4].idDrink),
+        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[5].idDrink),
+        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[6].idDrink),
+        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[7].idDrink),
+        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[8].idDrink),
+        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[9].idDrink),
+      ])
+        .then(([one, two, three, four, five, six, seven, eight, nine, ten]) => {
+          newDatum.push(one.data.drinks[0]);
+          newDatum.push(two.data.drinks[0]);
+          newDatum.push(three.data.drinks[0]);
+          newDatum.push(four.data.drinks[0]);
+          newDatum.push(five.data.drinks[0]);
+          newDatum.push(six.data.drinks[0]);
+          newDatum.push(seven.data.drinks[0]);
+          newDatum.push(eight.data.drinks[0]);
+          newDatum.push(nine.data.drinks[0]);
+          newDatum.push(ten.data.drinks[0]);
+          sortAPIResponse.sortDrinkRecipes(newDatum);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    },
+    sortFoodRecipesByCategory: (datum) => {
+      console.log(datum)
+    },
+    sortDrinkRecipesByCategory: (datum) => {
+      console.log(datum)
     }
-    setDrinks(recipes);
   }
 
   // This object contains functions for interacting with the sort form modal
