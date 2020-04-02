@@ -25,7 +25,7 @@ const App = props => {
   // Call the function that will find 10 random recipes from both APIs
   // This function runs only once on component mount
   useEffect(() => {
-    findRecipes()
+    manageAPICalls.findRandomRecipes()
   }, [])
 
   // This function that makes API calls to grab our 10 food and 10 drink recipes
