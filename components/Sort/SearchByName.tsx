@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 const SearchByName = (props) => {
+    const [searchText, setSearchText] = useState('');
     return (
         <View style={styles.inputContainer}>
             <Text style={styles.text}>Search for recipes by name.</Text>
             <TextInput
                 style={styles.textInput}
                 placeholder='Search by Name'
-                onChangeText={text => props.setSearchText(text)}
+                onChangeText={text => setSearchText(text)}
             />
-            <TouchableOpacity style={styles.submitButton} onPress={() => props.manageAPICalls.searchByName(props.searchText)}>
+            <TouchableOpacity style={styles.submitButton} onPress={() => props.manageAPICalls.searchByName(searchText)}>
                 <Text>Submit</Text>
             </TouchableOpacity>
         </View>

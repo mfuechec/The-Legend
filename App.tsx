@@ -22,7 +22,6 @@ const App = (props) => {
   const [drink, setDrink] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [whatIsSelected, setWhatIsSelected] = useState('food');
-  const [searchText, setSearchText] = useState('');
 
   // Call the function that will find 10 random recipes from both APIs
   // This function runs only once on component mount
@@ -52,7 +51,7 @@ const App = (props) => {
       if (whatIsSelected === 'food') {
         axios.get(APIKeys.food + 'search.php?s=' + searchText)
           .then((response) => {
-            sortAPIResponse.sortFoodRecipes(response);
+            sortAPIResponse.sortFoodRecipes(response.data.meals);
             manageModal.closeModal();
           })
           .catch((error) => {
@@ -62,7 +61,7 @@ const App = (props) => {
       if (whatIsSelected === 'drinks') {
         axios.get(APIKeys.drink + 'search.php?s=' + searchText)
           .then((response) => {
-            sortAPIResponse.sortDrinkRecipes(response);
+            sortAPIResponse.sortDrinkRecipes(response.data.drinks);
             manageModal.closeModal();
           })
           .catch((error) => {
@@ -314,7 +313,7 @@ const App = (props) => {
 
   return (
     <NativeRouter>
-      <Sort setSearchText={setSearchText} whatIsSelected={whatIsSelected} isModalVisible={isModalVisible} manageAPICalls={manageAPICalls} manageModal={manageModal} />
+      <Sort whatIsSelected={whatIsSelected} isModalVisible={isModalVisible} manageAPICalls={manageAPICalls} manageModal={manageModal} />
       <Route
         exact path='/'
         render={() => <LandingPage />} />
