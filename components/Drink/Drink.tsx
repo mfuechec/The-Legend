@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet, Image, Text } from 'react-native';
-import { Link } from 'react-router-native';
 
 const Drink = (props) => {
     var drink = props.drink;

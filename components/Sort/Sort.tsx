@@ -22,7 +22,7 @@ const Sort = (props) => {
                     <SortNav manageAPICalls={props.manageAPICalls} manageModal={props.manageModal} />
                 </View>
                 <View style={styles.searchByName}>
-                    <SearchByName whatIsSelected={props.whatIsSelected} />
+                    <SearchByName manageAPICalls={props.manageAPICalls} setSearchText={props.setSearchText} whatIsSelected={props.whatIsSelected} />
                 </View>
                 <View style={styles.searchByCategory}>
                     <SearchByCategory whatIsSelected={props.whatIsSelected} />
@@ -31,7 +31,7 @@ const Sort = (props) => {
                     <SearchByArea whatIsSelected={props.whatIsSelected} />
                 </View>
                 <View style={styles.searchByIngredients}>
-                    <SearchByIngredients whatIsSelected={props.whatIsSelected} />
+                    <SearchByIngredients manageAPICalls={props.manageAPICalls} whatIsSelected={props.whatIsSelected} />
                 </View>
                 <View style={styles.latestMeals}>
                     <LatestMeals whatIsSelected={props.whatIsSelected} />

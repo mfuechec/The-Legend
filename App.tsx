@@ -13,7 +13,7 @@ import FoodDirections from './components/Food/FoodDirections';
 import NavBar from './components/NavBar/NavBar';
 import Sort from './components/Sort/Sort';
 
-const App = props => {
+const App = (props) => {
 
   // Instantiates empty state objects for food and drink recipes
   const [foods, setFoods] = useState([]);
@@ -22,6 +22,7 @@ const App = props => {
   const [drink, setDrink] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [whatIsSelected, setWhatIsSelected] = useState('food');
+  const [searchText, setSearchText] = useState('');
 
   // Call the function that will find 10 random recipes from both APIs
   // This function runs only once on component mount
@@ -48,11 +49,49 @@ const App = props => {
           console.log(error)
         })
     },
-    searchFoods: () => {
-
+    searchByName: (searchText) => {
+      if (whatIsSelected === 'food') {
+        axios.get(APIKeys.food + 'search.php?s=' + searchText)
+          .then((response) => {
+            sortFoodRecipes(response);
+            manageModal.closeModal();
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+      if (whatIsSelected === 'drinks') {
+        axios.get(APIKeys.drink + 'search.php?s=' + searchText)
+          .then((response) => {
+            sortDrinkRecipes(response);
+            manageModal.closeModal();
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
     },
-    searchDrinks: () => {
-
+    searchByIngredients: (ingredient) => {
+      if (whatIsSelected === 'food') {
+        axios.get(APIKeys.food + 'filter.php?i=' + ingredient)
+          .then((response) => {
+            sortFoodRecipes(response);
+            manageModal.closeModal();
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+      if (whatIsSelected === 'drinks') {
+        axios.get(APIKeys.drink + 'filter.php?i=' + ingredient)
+          .then((response) => {
+            sortFoodRecipes(response);
+            manageModal.closeModal();
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
     }
   }
 
@@ -200,7 +239,7 @@ const App = props => {
 
   return (
     <NativeRouter>
-      <Sort whatIsSelected={whatIsSelected} isModalVisible={isModalVisible} manageAPICalls={manageAPICalls} manageModal={manageModal} />
+      <Sort setSearchText={setSearchText} whatIsSelected={whatIsSelected} isModalVisible={isModalVisible} manageAPICalls={manageAPICalls} manageModal={manageModal} />
       <Route
         exact path='/'
         render={() => <LandingPage />} />
