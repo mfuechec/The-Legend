@@ -30,8 +30,7 @@ const App = (props) => {
     manageAPICalls.findRandomRecipes()
   }, [])
 
-  // This function that makes API calls to grab our 10 food and 10 drink recipes
-  // This function then sends the responses on to separate functions to format for state
+  // This namespace holds all API calls for the app.
   const manageAPICalls = {
     findRandomRecipes: () => {
       axios.get(APIKeys.food + 'randomselection.php')
@@ -117,7 +116,7 @@ const App = (props) => {
     }
   }
 
-  // This function formats the response from the food API call and puts it into state
+  // This namespace holds functions that format the data received from API calls.
   const sortAPIResponse = {
     sortFoodRecipes: (datum) => {
       var recipes = [];
@@ -249,30 +248,23 @@ const App = (props) => {
     },
     sortFoodRecipesByIngredient: (datum) => {
       let newDatum = [];
+      let calls = [];
+      let iterations = 0;
+      if (datum.length > 10) {
+        iterations = 10;
+      } else {
+        iterations = datum.length;
+      }
 
-      Promise.all([
-        axios.get(APIKeys.food + 'lookup.php?i=' + datum[0].idMeal),
-        axios.get(APIKeys.food + 'lookup.php?i=' + datum[1].idMeal),
-        axios.get(APIKeys.food + 'lookup.php?i=' + datum[2].idMeal),
-        axios.get(APIKeys.food + 'lookup.php?i=' + datum[3].idMeal),
-        axios.get(APIKeys.food + 'lookup.php?i=' + datum[4].idMeal),
-        axios.get(APIKeys.food + 'lookup.php?i=' + datum[5].idMeal),
-        axios.get(APIKeys.food + 'lookup.php?i=' + datum[6].idMeal),
-        axios.get(APIKeys.food + 'lookup.php?i=' + datum[7].idMeal),
-        axios.get(APIKeys.food + 'lookup.php?i=' + datum[8].idMeal),
-        axios.get(APIKeys.food + 'lookup.php?i=' + datum[9].idMeal),
-      ])
-        .then(([one, two, three, four, five, six, seven, eight, nine, ten]) => {
-          newDatum.push(one.data.meals[0]);
-          newDatum.push(two.data.meals[0]);
-          newDatum.push(three.data.meals[0]);
-          newDatum.push(four.data.meals[0]);
-          newDatum.push(five.data.meals[0]);
-          newDatum.push(six.data.meals[0]);
-          newDatum.push(seven.data.meals[0]);
-          newDatum.push(eight.data.meals[0]);
-          newDatum.push(nine.data.meals[0]);
-          newDatum.push(ten.data.meals[0]);
+      for (let i = 0; i < iterations; i++) {
+        calls.push(axios.get(APIKeys.food + 'lookup.php?i=' + datum[i].idMeal));
+      }
+
+      Promise.all(calls)
+        .then((values) => {
+          for (let i = 0; i < values.length; i++) {
+            newDatum.push(values[i].data.meals[0]);
+          }
           sortAPIResponse.sortFoodRecipes(newDatum);
         })
         .catch((error) => {
@@ -281,30 +273,23 @@ const App = (props) => {
     },
     sortDrinkRecipesByIngredient: (datum) => {
       let newDatum = [];
+      let calls = [];
+      let iterations = 0;
+      if (datum.length > 10) {
+        iterations = 10;
+      } else {
+        iterations = datum.length;
+      }
 
-      Promise.all([
-        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[0].idDrink),
-        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[1].idDrink),
-        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[2].idDrink),
-        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[3].idDrink),
-        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[4].idDrink),
-        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[5].idDrink),
-        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[6].idDrink),
-        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[7].idDrink),
-        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[8].idDrink),
-        axios.get(APIKeys.drink + 'lookup.php?i=' + datum[9].idDrink),
-      ])
-        .then(([one, two, three, four, five, six, seven, eight, nine, ten]) => {
-          newDatum.push(one.data.drinks[0]);
-          newDatum.push(two.data.drinks[0]);
-          newDatum.push(three.data.drinks[0]);
-          newDatum.push(four.data.drinks[0]);
-          newDatum.push(five.data.drinks[0]);
-          newDatum.push(six.data.drinks[0]);
-          newDatum.push(seven.data.drinks[0]);
-          newDatum.push(eight.data.drinks[0]);
-          newDatum.push(nine.data.drinks[0]);
-          newDatum.push(ten.data.drinks[0]);
+      for (let i = 0; i < iterations; i++) {
+        calls.push(axios.get(APIKeys.drink + 'lookup.php?i=' + datum[i].idDrink));
+      }
+
+      Promise.all(calls)
+        .then((values) => {
+          for (let i = 0; i < values.length; i++) {
+            newDatum.push(values[i].data.drinks[0]);
+          }
           sortAPIResponse.sortDrinkRecipes(newDatum);
         })
         .catch((error) => {
@@ -319,7 +304,7 @@ const App = (props) => {
     }
   }
 
-  // This object contains functions for interacting with the sort form modal
+  // This namespace contains functions for interacting with the sort form modal
   const manageModal = {
     openModal: () => { setIsModalVisible(true) },
     closeModal: () => { setIsModalVisible(false) },
