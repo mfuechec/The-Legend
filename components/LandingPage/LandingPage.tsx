@@ -6,13 +6,13 @@ const LandingPage = (props) => {
     return (
         <View style={styles.optionsContainer}>
             <TouchableHighlight style={styles.foodContainer}>
-                <Link to='/NewFood'>
+                <Link to='/NewFood' onPress={props.manageModal.searchFoods}>
                     <ImageBackground style={styles.foodImage} source={require('/Users/mfuechec/Desktop/RecipeBook/assets/foodBackground.jpg')}>
                     </ImageBackground>
                 </Link>
             </TouchableHighlight>
             <TouchableHighlight style={styles.foodContainer}>
-                <Link to='/NewDrinks'>
+                <Link to='/NewDrinks' onPress={props.manageModal.searchDrinks}>
                     <ImageBackground style={styles.drinksImage} source={require('/Users/mfuechec/Desktop/RecipeBook/assets/drinksBackground.jpg')}>
                     </ImageBackground>
                 </Link>

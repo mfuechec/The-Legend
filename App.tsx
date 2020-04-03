@@ -316,7 +316,7 @@ const App = (props) => {
       <Sort whatIsSelected={whatIsSelected} isModalVisible={isModalVisible} manageAPICalls={manageAPICalls} manageModal={manageModal} />
       <Route
         exact path='/'
-        render={() => <LandingPage />} />
+        render={() => <LandingPage manageModal={manageModal} />} />
 
       <Route
         path='/NewFood'
