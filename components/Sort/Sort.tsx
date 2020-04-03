@@ -13,7 +13,7 @@ const Sort = (props) => {
         <Modal
             style={styles.modal}
             isVisible={props.isModalVisible}
-            onBackdropPress={props.closeModal}
+            onBackdropPress={props.manageModal.closeModal}
             animationIn='slideInRight'
             animationOut='slideOutRight'
         >
