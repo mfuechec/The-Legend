@@ -271,8 +271,8 @@ const App = (props) => {
       let newDatum = [];
       let calls = [];
       let iterations = 0;
-      if (datum.length > 10) {
-        iterations = 10;
+      if (datum.length > 25) {
+        iterations = 25
       } else {
         iterations = datum.length;
       }
@@ -296,8 +296,8 @@ const App = (props) => {
       let newDatum = [];
       let calls = [];
       let iterations = 0;
-      if (datum.length > 10) {
-        iterations = 10;
+      if (datum.length > 25) {
+        iterations = 25;
       } else {
         iterations = datum.length;
       }
