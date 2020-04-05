@@ -25,7 +25,7 @@ const Sort = (props) => {
                     <SearchByName manageAPICalls={props.manageAPICalls} whatIsSelected={props.whatIsSelected} />
                 </View>
                 <View style={styles.searchByCategory}>
-                    <SearchByCategory whatIsSelected={props.whatIsSelected} />
+                    <SearchByCategory whatIsSelected={props.whatIsSelected} manageAPICalls={props.manageAPICalls} />
                 </View>
                 <View style={styles.searchByArea}>
                     <SearchByArea whatIsSelected={props.whatIsSelected} />

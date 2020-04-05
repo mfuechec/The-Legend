@@ -73,7 +73,7 @@ const App = (props) => {
       if (whatIsSelected === 'food') {
         axios.get(APIKeys.food + 'filter.php?i=' + ingredient)
           .then((response) => {
-            sortAPIResponse.sortFoodRecipesByIngredient(response.data.meals);
+            sortAPIResponse.sortFilteredFoodRecipes(response.data.meals);
             manageModal.closeModal();
           })
           .catch((error) => {
@@ -83,7 +83,7 @@ const App = (props) => {
       if (whatIsSelected === 'drinks') {
         axios.get(APIKeys.drink + 'filter.php?i=' + ingredient)
           .then((response) => {
-            sortAPIResponse.sortDrinkRecipesByIngredient(response.data.drinks);
+            sortAPIResponse.sortFilteredDrinkRecipes(response.data.drinks);
             manageModal.closeModal();
           })
           .catch((error) => {
@@ -95,7 +95,7 @@ const App = (props) => {
       if (whatIsSelected === 'food') {
         axios.get(APIKeys.food + 'filter.php?c=' + category)
           .then((response) => {
-            sortAPIResponse.sortFoodRecipesByCategory(response);
+            sortAPIResponse.sortFilteredFoodRecipes(response.data.meals);
             manageModal.closeModal();
           })
           .catch((error) => {
@@ -105,7 +105,7 @@ const App = (props) => {
       if (whatIsSelected === 'drinks') {
         axios.get(APIKeys.drink + 'filter.php?c=' + category)
           .then((response) => {
-            sortAPIResponse.sortDrinkRecipesByCategory(response);
+            sortAPIResponse.sortFilteredDrinkRecipes(response.data.drinks);
             manageModal.closeModal();
           })
           .catch((error) => {
@@ -245,7 +245,7 @@ const App = (props) => {
       }
       setDrinks(recipes);
     },
-    sortFoodRecipesByIngredient: (datum) => {
+    sortFilteredFoodRecipes: (datum) => {
       let newDatum = [];
       let calls = [];
       let iterations = 0;
@@ -270,7 +270,7 @@ const App = (props) => {
           console.log(error);
         })
     },
-    sortDrinkRecipesByIngredient: (datum) => {
+    sortFilteredDrinkRecipes: (datum) => {
       let newDatum = [];
       let calls = [];
       let iterations = 0;
@@ -294,12 +294,6 @@ const App = (props) => {
         .catch((error) => {
           console.log(error);
         })
-    },
-    sortFoodRecipesByCategory: (datum) => {
-      console.log(datum)
-    },
-    sortDrinkRecipesByCategory: (datum) => {
-      console.log(datum)
     }
   }
 
