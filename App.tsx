@@ -112,6 +112,28 @@ const App = (props) => {
             console.log(error)
           })
       }
+    },
+    searchByArea: (area) => {
+      if (whatIsSelected === 'food') {
+        axios.get(APIKeys.food + 'filter.php?a=' + area)
+          .then((response) => {
+            sortAPIResponse.sortFilteredFoodRecipes(response.data.meals);
+            manageModal.closeModal();
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+      if (whatIsSelected === 'drinks') {
+        axios.get(APIKeys.drink + 'filter.php?a=' + area)
+          .then((response) => {
+            sortAPIResponse.sortFilteredDrinkRecipes(response.data.drinks);
+            manageModal.closeModal();
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
     }
   }
 
