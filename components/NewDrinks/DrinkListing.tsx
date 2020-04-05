@@ -7,13 +7,13 @@ const DrinksListing = (props) => {
     const drink = props.drink;
     return (
         <TouchableHighlight style={styles.listingContainer}>
-            <Link to='/Drink' onPress={()=>{props.setDrink(drink)}}>
+            <Link to='/Drink' onPress={() => { props.setDrink(drink) }}>
                 <View style={styles.listingContainerView}>
                     <View style={styles.imageContainer}>
-                        <Image style={styles.image} source={{uri: drink.image}}></Image>
+                        <Image style={styles.image} source={{ uri: drink.image }}></Image>
                     </View>
                     <View style={styles.nameContainer}>
-                        <View style={{height: '100%'}}>
+                        <View style={{ height: '100%' }}>
                             <Text style={styles.name}>{drink.name}</Text>
                             <IngredientsList ingredients={drink.ingredients} />
                         </View>
@@ -27,7 +27,9 @@ const DrinksListing = (props) => {
 const styles = StyleSheet.create({
     listingContainer: {
         height: 300,
-        marginBottom: '.25%'
+        marginBottom: '.25%',
+        backgroundColor: '#333333',
+        opacity: .75
     },
     listingContainerView: {
         height: '100%',
