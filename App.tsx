@@ -299,8 +299,18 @@ const App = (props) => {
         iterations = datum.length;
       }
 
+      let prevChosen = [];
+
       for (let i = 0; i < iterations; i++) {
-        calls.push(axios.get(APIKeys.food + 'lookup.php?i=' + datum[i].idMeal));
+        // Chooses a random number between 0 and datum.length - ensures a new selection
+        let randomSelection = Math.floor(Math.random() * datum.length);
+        // Ensures no duplicates
+        if (!prevChosen.includes(randomSelection)) {
+          calls.push(axios.get(APIKeys.food + 'lookup.php?i=' + datum[randomSelection].idMeal));
+          prevChosen.push(randomSelection);
+        } else {
+          i--;
+        }
       }
 
       Promise.all(calls)
@@ -324,8 +334,18 @@ const App = (props) => {
         iterations = datum.length;
       }
 
+      let prevChosen = [];
+
       for (let i = 0; i < iterations; i++) {
-        calls.push(axios.get(APIKeys.drink + 'lookup.php?i=' + datum[i].idDrink));
+        // Chooses a random number between 0 and datum.length - ensures a new selection
+        let randomSelection = Math.floor(Math.random() * datum.length);
+        // Ensures no duplicates
+        if (!prevChosen.includes(randomSelection)) {
+          calls.push(axios.get(APIKeys.food + 'lookup.php?i=' + datum[randomSelection].idMeal));
+          prevChosen.push(randomSelection);
+        } else {
+          i--;
+        }
       }
 
       Promise.all(calls)
