@@ -32,6 +32,15 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         alignItems: 'center'
+    },
+    submitButton: {
+        borderWidth: 1,
+        borderRadius: 25,
+        marginTop: 10,
+        width: '20%',
+        height: '20%',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })
 

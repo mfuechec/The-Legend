@@ -33,6 +33,8 @@ const Sort = (props) => {
                 <View style={styles.searchByIngredients}>
                     <SearchByIngredients manageAPICalls={props.manageAPICalls} whatIsSelected={props.whatIsSelected} />
                 </View>
+            </View>
+            <View style={styles.latestContainer}>
                 <View style={styles.latestMeals}>
                     <LatestMeals manageAPICalls={props.manageAPICalls} whatIsSelected={props.whatIsSelected} />
                 </View>
@@ -58,23 +60,38 @@ const styles = StyleSheet.create({
     },
     searchByName: {
         height: '15%',
-        backgroundColor: 'red'
+        backgroundColor: 'white',
+        marginBottom: 20,
+        marginLeft: 20,
+        marginRight: 20
     },
     searchByCategory: {
         height: '15%',
-        backgroundColor: 'blue'
+        backgroundColor: 'white',
+        marginBottom: 20,
+        marginLeft: 20,
+        marginRight: 20
     },
     searchByArea: {
         height: '15%',
-        backgroundColor: 'orange'
+        backgroundColor: 'white',
+        marginBottom: 20,
+        marginLeft: 20,
+        marginRight: 20
     },
     searchByIngredients: {
         height: '15%',
-        backgroundColor: 'pink'
+        backgroundColor: 'white',
+        marginBottom: 20,
+        marginLeft: 20,
+        marginRight: 20
     },
     latestMeals: {
         height: '15%',
-        backgroundColor: 'yellow'
+        backgroundColor: 'white',
+        marginBottom: 20,
+        marginLeft: 20,
+        marginRight: 20
     }
 })
 
