@@ -134,6 +134,28 @@ const App = (props) => {
             console.log(error)
           })
       }
+    },
+    searchForLatest: () => {
+      if (whatIsSelected === 'food') {
+        axios.get(APIKeys.food + 'latest.php')
+          .then((response) => {
+            sortAPIResponse.sortFilteredFoodRecipes(response.data.meals);
+            manageModal.closeModal();
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
+      if (whatIsSelected === 'drinks') {
+        axios.get(APIKeys.drink + 'latest.php')
+          .then((response) => {
+            sortAPIResponse.sortFilteredDrinkRecipes(response.data.drinks);
+            manageModal.closeModal();
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
     }
   }
 

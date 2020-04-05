@@ -34,7 +34,7 @@ const Sort = (props) => {
                     <SearchByIngredients manageAPICalls={props.manageAPICalls} whatIsSelected={props.whatIsSelected} />
                 </View>
                 <View style={styles.latestMeals}>
-                    <LatestMeals whatIsSelected={props.whatIsSelected} />
+                    <LatestMeals manageAPICalls={props.manageAPICalls} whatIsSelected={props.whatIsSelected} />
                 </View>
             </View>
         </Modal>
