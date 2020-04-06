@@ -91,7 +91,7 @@ const SearchByCategory = (props) => {
         <View style={styles.inputContainer}>
             <Text style={styles.text}>Search for recipes by category.</Text>
             <Dropdown
-                onChangeText={(value) => { props.manageAPICalls.searchByCategory(value) }}
+                onChangeText={(value) => { props.manageAPICalls.searchWithFilter(value, 'category') }}
                 style={styles.dropdown}
                 label='Select category'
                 data={selection}

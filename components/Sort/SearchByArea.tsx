@@ -83,7 +83,7 @@ const SearchByArea = (props) => {
             <View style={styles.inputContainer}>
                 <Text style={styles.text}>Search for recipes by origin.</Text>
                 <Dropdown
-                    onChangeText={(value) => { props.manageAPICalls.searchByArea(value) }}
+                    onChangeText={(value) => { props.manageAPICalls.searchWithFilter(value, 'area') }}
                     style={styles.dropdown}
                     label='Select origin'
                     data={selection}
@@ -107,7 +107,7 @@ const SearchByArea = (props) => {
             <View style={styles.inputContainer}>
                 <Text style={styles.text}>Search for recipes by alcohol content.</Text>
                 <Dropdown
-                    onChangeText={(value) => { props.manageAPICalls.searchByArea(value) }}
+                    onChangeText={(value) => { props.manageAPICalls.searchWithFilter(value, 'area') }}
                     style={styles.dropdown}
                     label='Select alcohol content'
                     data={selection}

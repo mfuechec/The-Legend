@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 
@@ -1972,7 +1972,7 @@ const SearchByIngredients = (props) => {
         <View style={styles.inputContainer}>
             <Text style={styles.text}>Search for recipes by main ingredient.</Text>
             <Dropdown
-                onChangeText={(value) => { props.manageAPICalls.searchByIngredient(value) }}
+                onChangeText={(value) => { props.manageAPICalls.searchWithFilter(value, 'ingredient') }}
                 style={styles.dropdown}
                 label='Select main ingredient'
                 data={selection}

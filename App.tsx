@@ -21,7 +21,7 @@ const App = (props) => {
   const [food, setFood] = useState({});
   const [drink, setDrink] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [whatIsSelected, setWhatIsSelected] = useState('food');
+  const [whatIsSelected, setWhatIsSelected] = useState('');
 
   // Call the function that will find 10 random recipes from both APIs
   // This function runs only once on component mount
@@ -29,7 +29,7 @@ const App = (props) => {
     manageAPICalls.findRandomRecipes()
   }, [])
 
-  // This namespace holds all API calls for the app.
+  // This object holds all API calls for the app.
   const manageAPICalls = {
     findRandomRecipes: () => {
       axios.get(APIKeys.food + 'randomselection.php')
@@ -69,9 +69,20 @@ const App = (props) => {
           })
       }
     },
-    searchByIngredient: (ingredient) => {
+    searchWithFilter: (selection, filter) => {
+      let filterURL = '';
+      if (filter === 'ingredient') {
+        filterURL = 'filter.php?i=';
+      }
+      if (filter === 'category') {
+        filterURL = 'filter.php?c=';
+      }
+      if (filter === 'area') {
+        filterURL = 'filter.php?a=';
+      }
+
       if (whatIsSelected === 'food') {
-        axios.get(APIKeys.food + 'filter.php?i=' + ingredient)
+        axios.get(APIKeys.food + filterURL + selection)
           .then((response) => {
             sortAPIResponse.sortFilteredFoodRecipes(response.data.meals);
             manageModal.closeModal();
@@ -79,59 +90,14 @@ const App = (props) => {
           .catch((error) => {
             console.log(error)
           })
-      }
-      if (whatIsSelected === 'drinks') {
-        axios.get(APIKeys.drink + 'filter.php?i=' + ingredient)
+      } else {
+        axios.get(APIKeys.drink + filterURL + selection)
           .then((response) => {
-            sortAPIResponse.sortFilteredDrinkRecipes(response.data.drinks);
+            sortAPIResponse.sortFilteredDrinkRecipes(response.data.drink);
             manageModal.closeModal();
           })
           .catch((error) => {
-            console.log(error)
-          })
-      }
-    },
-    searchByCategory: (category) => {
-      if (whatIsSelected === 'food') {
-        axios.get(APIKeys.food + 'filter.php?c=' + category)
-          .then((response) => {
-            sortAPIResponse.sortFilteredFoodRecipes(response.data.meals);
-            manageModal.closeModal();
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      }
-      if (whatIsSelected === 'drinks') {
-        axios.get(APIKeys.drink + 'filter.php?c=' + category)
-          .then((response) => {
-            sortAPIResponse.sortFilteredDrinkRecipes(response.data.drinks);
-            manageModal.closeModal();
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      }
-    },
-    searchByArea: (area) => {
-      if (whatIsSelected === 'food') {
-        axios.get(APIKeys.food + 'filter.php?a=' + area)
-          .then((response) => {
-            sortAPIResponse.sortFilteredFoodRecipes(response.data.meals);
-            manageModal.closeModal();
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      }
-      if (whatIsSelected === 'drinks') {
-        axios.get(APIKeys.drink + 'filter.php?a=' + area)
-          .then((response) => {
-            sortAPIResponse.sortFilteredDrinkRecipes(response.data.drinks);
-            manageModal.closeModal();
-          })
-          .catch((error) => {
-            console.log(error)
+            console.log(error);
           })
       }
     },
@@ -159,7 +125,7 @@ const App = (props) => {
     }
   }
 
-  // This namespace holds functions that format the data received from API calls.
+  // This object holds functions that format the data received from API calls.
   const sortAPIResponse = {
     sortFoodRecipes: (datum) => {
       var recipes = [];
@@ -361,7 +327,7 @@ const App = (props) => {
     }
   }
 
-  // This namespace contains functions for interacting with the sort form modal
+  // This object contains functions for interacting with the sort form modal
   const manageModal = {
     openModal: () => { setIsModalVisible(true) },
     closeModal: () => { setIsModalVisible(false) },
