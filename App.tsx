@@ -93,7 +93,7 @@ const App = (props) => {
       } else {
         axios.get(APIKeys.drink + filterURL + selection)
           .then((response) => {
-            sortAPIResponse.sortFilteredDrinkRecipes(response.data.drink);
+            sortAPIResponse.sortFilteredDrinkRecipes(response.data.drinks);
             manageModal.closeModal();
           })
           .catch((error) => {
@@ -307,7 +307,7 @@ const App = (props) => {
         let randomSelection = Math.floor(Math.random() * datum.length);
         // Ensures no duplicates
         if (!prevChosen.includes(randomSelection)) {
-          calls.push(axios.get(APIKeys.food + 'lookup.php?i=' + datum[randomSelection].idMeal));
+          calls.push(axios.get(APIKeys.drink + 'lookup.php?i=' + datum[randomSelection].idDrink));
           prevChosen.push(randomSelection);
         } else {
           i--;

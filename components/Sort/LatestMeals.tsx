@@ -13,12 +13,12 @@ const LatestMeals = (props) => {
 
 const styles = StyleSheet.create({
     text: {
-        marginTop: 10,
-        marginBottom: 10,
+        marginTop: '5%',
+        marginBottom: '5%',
         fontSize: 20
     },
     textInput: {
-        height: 40,
+        height: '20%',
         borderColor: 'gray',
         borderWidth: 1,
         width: '75%'

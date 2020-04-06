@@ -10,7 +10,6 @@ const Ingredient = (props) => {
 const styles = StyleSheet.create({
     ingredient: {
         marginLeft: '5%',
-        fontSize: 15,
         color: 'white'
     }
 })

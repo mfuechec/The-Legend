@@ -1,6 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { Link } from 'react-router-native';
+import {
+    heightPercentageToDP as hp,
+    widthPercentageToDP as wp
+} from 'react-native-responsive-screen';
 
 const SortNav = (props) => {
     return (
@@ -14,12 +18,12 @@ const SortNav = (props) => {
                 </TouchableHighlight>
                 <TouchableHighlight style={styles.searchFoodsButton}>
                     <Link onPress={props.manageModal.searchFoods} to='/NewFood'>
-                        <Text style={styles.text}>Search Foods</Text>
+                        <Text style={styles.text}>Foods</Text>
                     </Link>
                 </TouchableHighlight>
                 <TouchableHighlight style={styles.searchDrinksButton}>
                     <Link onPress={props.manageModal.searchDrinks} to='/NewDrinks'>
-                        <Text style={styles.text}>Search Drinks</Text>
+                        <Text style={styles.text}>Drinks</Text>
                     </Link>
                 </TouchableHighlight>
             </View>
@@ -38,36 +42,36 @@ const styles = StyleSheet.create({
     sortButtonContainer: {
         height: '85%',
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'center'
     },
     homeButton: {
-        marginLeft: '10%',
-        marginRight: '15%',
+        marginRight: wp('5%'),
         backgroundColor: 'white',
-        width: '15%',
-        height: '74%',
+        width: 'auto',
+        minWidth: wp('7.5%'),
+        height: '50%',
         borderRadius: 25,
         justifyContent: 'center',
         borderColor: 'red',
         borderWidth: 1
     },
     searchFoodsButton: {
-        marginLeft: '2.5%',
-        marginRight: '15%',
+        marginRight: wp('5%'),
         backgroundColor: 'white',
-        width: '15%',
-        height: '74%',
+        width: 'auto',
+        minWidth: wp('7.5%'),
+        height: '50%',
         borderRadius: 25,
         justifyContent: 'center',
         borderColor: 'red',
         borderWidth: 1
     },
     searchDrinksButton: {
-        marginLeft: '2.5%',
-        marginRight: '15%',
         backgroundColor: 'white',
-        width: '15%',
-        height: '74%',
+        width: 'auto',
+        minWidth: wp('7.5%'),
+        height: '50%',
         borderRadius: 25,
         justifyContent: 'center',
         borderColor: 'red',

@@ -7,6 +7,10 @@ import SearchByCategory from './SearchByCategory';
 import SearchByArea from './SearchByArea';
 import SearchByIngredients from './SearchByIngredients';
 import LatestMeals from './LatestMeals';
+import {
+    heightPercentageToDP as hp,
+    widthPercentageToDP as wp
+} from 'react-native-responsive-screen';
 
 const Sort = (props) => {
     return (
@@ -45,10 +49,8 @@ const Sort = (props) => {
 
 const styles = StyleSheet.create({
     modal: {
-        maxHeight: '70%',
-        maxWidth: '35%',
-        marginTop: '25%',
-        marginLeft: '60%',
+        marginTop: hp('15%'),
+        marginLeft: wp('50%'),
         backgroundColor: 'white'
     },
     sortContainer: {
@@ -59,39 +61,39 @@ const styles = StyleSheet.create({
         height: '15%'
     },
     searchByName: {
-        height: '15%',
+        height: '17.5%',
         backgroundColor: 'white',
-        marginBottom: 20,
-        marginLeft: 20,
-        marginRight: 20
+        marginBottom: '10%',
+        marginLeft: '10%',
+        marginRight: '10%'
     },
     searchByCategory: {
         height: '15%',
         backgroundColor: 'white',
-        marginBottom: 20,
-        marginLeft: 20,
-        marginRight: 20
+        marginBottom: '10%',
+        marginLeft: '10%',
+        marginRight: '10%'
     },
     searchByArea: {
         height: '15%',
         backgroundColor: 'white',
-        marginBottom: 20,
-        marginLeft: 20,
-        marginRight: 20
+        marginBottom: '10%',
+        marginLeft: '10%',
+        marginRight: '10%'
     },
     searchByIngredients: {
         height: '15%',
         backgroundColor: 'white',
-        marginBottom: 20,
-        marginLeft: 20,
-        marginRight: 20
+        marginBottom: '10%',
+        marginLeft: '10%',
+        marginRight: '10%'
     },
     latestMeals: {
         height: '15%',
         backgroundColor: 'white',
-        marginBottom: 20,
-        marginLeft: 20,
-        marginRight: 20
+        marginBottom: '10%',
+        marginLeft: '10%',
+        marginRight: '10%'
     }
 })
 

@@ -1,6 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
+import {
+    heightPercentageToDP as hp,
+    widthPercentageToDP as wp
+} from 'react-native-responsive-screen';
 
 const SearchByIngredients = (props) => {
     let selection = [];
@@ -1968,24 +1972,38 @@ const SearchByIngredients = (props) => {
             }
         ];
     }
-    return (
-        <View style={styles.inputContainer}>
-            <Text style={styles.text}>Search for recipes by main ingredient.</Text>
-            <Dropdown
-                onChangeText={(value) => { props.manageAPICalls.searchWithFilter(value, 'ingredient') }}
-                style={styles.dropdown}
-                label='Select main ingredient'
-                data={selection}
-            />
-        </View>
-    )
+
+    if (Dimensions.get('window').width < 1000) {
+        return (
+            <View style={styles.inputContainer}>
+                <Dropdown
+                    onChangeText={(value) => { props.manageAPICalls.searchWithFilter(value, 'ingredient') }}
+                    style={styles.dropdown}
+                    label='Select main ingredient'
+                    data={selection}
+                />
+            </View>
+        )
+    } else {
+        return (
+            <View style={styles.inputContainer}>
+                <Text style={styles.text}>Search for recipes by main ingredient.</Text>
+                <Dropdown
+                    onChangeText={(value) => { props.manageAPICalls.searchWithFilter(value, 'ingredient') }}
+                    style={styles.dropdown}
+                    label='Select main ingredient'
+                    data={selection}
+                />
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
     text: {
-        marginTop: 10,
-        marginBottom: 10,
-        fontSize: 20
+        marginTop: '5%',
+        marginBottom: '5%',
+        fontSize: hp('1.6%')
     }
 })
 

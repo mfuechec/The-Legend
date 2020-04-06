@@ -2,6 +2,10 @@ import React from 'react';
 import { StyleSheet, View, Image, Text, TouchableHighlight } from 'react-native';
 import IngredientsList from './IngredientsList';
 import { Link } from 'react-router-native';
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp
+} from 'react-native-responsive-screen';
 
 const DrinksListing = (props) => {
     const drink = props.drink;
@@ -26,7 +30,7 @@ const DrinksListing = (props) => {
 
 const styles = StyleSheet.create({
     listingContainer: {
-        height: 300,
+        height: hp('25%'),
         marginBottom: '.25%',
         backgroundColor: '#333333',
         opacity: .75
@@ -50,7 +54,6 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     nameContainer: {
-        width: '27.5%',
         height: '100%',
         justifyContent: 'center',
         display: 'flex',
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
     },
     name: {
         alignSelf: 'center',
-        fontSize: 35,
+        fontSize: 25,
         color: 'white'
     },
     descContainer: {
