@@ -4,7 +4,7 @@ import DrinksList from './DrinksList';
 
 const NewDrinks = (props) => {
     return (
-        <ImageBackground source={require('/Users/mfuechec/Desktop/RecipeBook/assets/barBackground.jpeg')} style={styles.background}>
+        <ImageBackground source={require('/Users/mfuechec/Desktop/RecipeBook/assets/woodBackground.jpg')} style={styles.background}>
             <ScrollView style={styles.recipesContainer}>
                 <DrinksList setDrink={props.setDrink} drinks={props.drinks} />
             </ScrollView>
