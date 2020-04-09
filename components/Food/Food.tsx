@@ -6,51 +6,51 @@ const Food = (props) => {
     var food = props.food;
     return (
         <ImageBackground source={require('/Users/mfuechec/Desktop/RecipeBook/assets/Herbs.jpg')} style={styles.container}>
+            <Text style={styles.name}>{food.name}</Text>
             <View style={styles.imageContainer}>
                 <Image style={styles.image} source={{ uri: food.image }}></Image>
             </View>
             <View style={styles.recipeContainer}>
                 <View style={styles.recipeInfo}>
-                    <Text style={styles.name}>{food.name}</Text>
                     <View style={styles.ingredientsContainer}>
                         <View style={styles.measurementsLeft}>
-                            <Text>{food.measurements[0]}</Text>
-                            <Text>{food.measurements[1]}</Text>
-                            <Text>{food.measurements[2]}</Text>
-                            <Text>{food.measurements[3]}</Text>
-                            <Text>{food.measurements[4]}</Text>
+                            <Text style={styles.text}>{food.measurements[0]}</Text>
+                            <Text style={styles.text}>{food.measurements[1]}</Text>
+                            <Text style={styles.text}>{food.measurements[2]}</Text>
+                            <Text style={styles.text}>{food.measurements[3]}</Text>
+                            <Text style={styles.text}>{food.measurements[4]}</Text>
                         </View>
                         <View style={styles.ingredientsLeft}>
-                            <Text>{food.ingredients[0]}</Text>
-                            <Text>{food.ingredients[1]}</Text>
-                            <Text>{food.ingredients[2]}</Text>
-                            <Text>{food.ingredients[3]}</Text>
-                            <Text>{food.ingredients[4]}</Text>
+                            <Text style={styles.text}>{food.ingredients[0]}</Text>
+                            <Text style={styles.text}>{food.ingredients[1]}</Text>
+                            <Text style={styles.text}>{food.ingredients[2]}</Text>
+                            <Text style={styles.text}>{food.ingredients[3]}</Text>
+                            <Text style={styles.text}>{food.ingredients[4]}</Text>
                         </View>
                         <View style={styles.measurementsRight}>
-                            <Text>{food.measurements[5]}</Text>
-                            <Text>{food.measurements[6]}</Text>
-                            <Text>{food.measurements[7]}</Text>
-                            <Text>{food.measurements[8]}</Text>
-                            <Text>{food.measurements[9]}</Text>
+                            <Text style={styles.text}>{food.measurements[5]}</Text>
+                            <Text style={styles.text}>{food.measurements[6]}</Text>
+                            <Text style={styles.text}>{food.measurements[7]}</Text>
+                            <Text style={styles.text}>{food.measurements[8]}</Text>
+                            <Text style={styles.text}>{food.measurements[9]}</Text>
                         </View>
                         <View style={styles.ingredientsRight}>
-                            <Text>{food.ingredients[5]}</Text>
-                            <Text>{food.ingredients[6]}</Text>
-                            <Text>{food.ingredients[7]}</Text>
-                            <Text>{food.ingredients[8]}</Text>
-                            <Text>{food.ingredients[9]}</Text>
+                            <Text style={styles.text}>{food.ingredients[5]}</Text>
+                            <Text style={styles.text}>{food.ingredients[6]}</Text>
+                            <Text style={styles.text}>{food.ingredients[7]}</Text>
+                            <Text style={styles.text}>{food.ingredients[8]}</Text>
+                            <Text style={styles.text}>{food.ingredients[9]}</Text>
                         </View>
                     </View>
                 </View>
                 <View style={styles.buttonContainer}>
                     <Link style={styles.directionsButton} to='/FoodDirections'>
-                        <Text style={styles.text}>
+                        <Text style={styles.buttonText}>
                             Directions
                         </Text>
                     </Link>
                     <Link style={styles.directionsButton} to='/NewFood'>
-                        <Text style={styles.text}>
+                        <Text style={styles.buttonText}>
                             Back
                         </Text>
                     </Link>
@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     imageContainer: {
-        height: '50%',
-        width: '75%',
+        height: '30%',
+        width: '50%',
         marginTop: '2.5%'
     },
     image: {
@@ -91,7 +91,9 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     name: {
-        fontSize: 35
+        fontSize: 35,
+        marginTop: '25%',
+        color: 'white'
     },
     ingredientsContainer: {
         display: 'flex',
@@ -121,7 +123,7 @@ const styles = StyleSheet.create({
         marginLeft: '1%',
         marginRight: '1%'
     },
-    text: {
+    buttonText: {
         textAlign: 'center'
     },
     buttonContainer: {
@@ -131,6 +133,9 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row-reverse',
         justifyContent: 'center'
+    },
+    text: {
+        color: 'white'
     }
 })
 
