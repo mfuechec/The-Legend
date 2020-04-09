@@ -104,7 +104,8 @@ const styles = StyleSheet.create({
         height: '10%'
     },
     text: {
-        color: 'white'
+        color: 'white',
+        fontSize: 20
     },
     instructionsText: {
         color: 'white',

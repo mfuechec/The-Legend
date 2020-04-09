@@ -135,7 +135,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     text: {
-        color: 'white'
+        color: 'white',
+        fontSize: 20
     }
 })
 
