@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { NativeRouter, Route } from "react-router-native";
 import LandingPage from './components/LandingPage/LandingPage';
 import NewFood from './components/NewFood/NewFood';
@@ -13,7 +13,7 @@ import FoodDirections from './components/Food/FoodDirections';
 import NavBar from './components/NavBar/NavBar';
 import Sort from './components/Sort/Sort';
 
-const App = (props) => {
+const App = () => {
 
   // Instantiates empty state objects for food and drink recipes
   const [foods, setFoods] = useState([]);
@@ -394,15 +394,5 @@ const App = (props) => {
   )
 
 }
-
-const styles = StyleSheet.create({
-  container: {
-    height: '100%'
-  },
-  sortModalContainer: {
-    height: '50%',
-    width: '50%'
-  }
-})
 
 export default App;
