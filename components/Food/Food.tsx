@@ -93,7 +93,9 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 35,
         marginTop: '25%',
-        color: 'white'
+        color: 'white',
+        width: '50%',
+        textAlign: 'center'
     },
     ingredientsContainer: {
         display: 'flex',

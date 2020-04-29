@@ -3,7 +3,8 @@ const mysqlConfig = require('./config.js');
 
 var connection = mysql.createConnection(mysqlConfig);
 
-connection.connect((err) => {
-    if (err) throw err;
-    console.log('Connected!')
-})
+addToFavorite = function (data, database, callback) {
+    console.log('It Works!')
+}
+
+module.exports.addToFavorite = addToFavorite;

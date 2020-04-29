@@ -12,6 +12,7 @@ import DrinkDirections from './components/Drink/DrinkDirections';
 import FoodDirections from './components/Food/FoodDirections';
 import NavBar from './components/NavBar/NavBar';
 import Sort from './components/Sort/Sort';
+const db = require('./db/index');
 
 const App = () => {
 
@@ -122,6 +123,9 @@ const App = () => {
             console.log(error)
           })
       }
+    },
+    addToFavorite: () => {
+      db.addToFavorite;
     }
   }
 
@@ -347,7 +351,7 @@ const App = () => {
         render={() =>
           <View>
             <NavBar findRandomRecipes={manageAPICalls.findRandomRecipes} openModal={manageModal.openModal} />
-            <NewFood foods={foods} setFood={setFood} />
+            <NewFood manageAPICalls={manageAPICalls} foods={foods} setFood={setFood} />
           </View>} />
 
       <Route
@@ -355,7 +359,7 @@ const App = () => {
         render={() =>
           <View>
             <NavBar findRandomRecipes={manageAPICalls.findRandomRecipes} openModal={manageModal.openModal} />
-            <NewDrinks drinks={drinks} setDrink={setDrink} />
+            <NewDrinks manageAPICalls={manageAPICalls} drinks={drinks} setDrink={setDrink} />
           </View>} />
 
       <Route

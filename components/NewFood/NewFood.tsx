@@ -6,7 +6,7 @@ const NewFoods = (props) => {
     return (
         <ImageBackground source={require('/Users/mfuechec/Desktop/RecipeBook/assets/woodBackground.jpg')} style={styles.background}>
             <ScrollView style={styles.recipesContainer}>
-                <FoodsList setFood={props.setFood} foods={props.foods} />
+                <FoodsList manageAPICalls={props.manageAPICalls} setFood={props.setFood} foods={props.foods} />
             </ScrollView>
         </ImageBackground>
     )
