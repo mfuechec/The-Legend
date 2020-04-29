@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, View, ScrollView } from 'react-native';
+import { Text, StyleSheet, View, ScrollView, ImageBackground } from 'react-native';
 
 const FoodDirections = props => {
     var instructionList = props.food.instructions.split('.');
@@ -7,12 +7,18 @@ const FoodDirections = props => {
     instructionList.map((item, i) => {
         if (item.length !== 0) {
             instructionList[i] = item.trim();
-            instructions.push(<Text style={styles.step}>Step {i + 1}: {instructionList[i]}.</Text>);
+            instructions.push(
+                <View>
+                    <Text style={styles.step}>Step {i + 1}</Text>
+                    <Text style={styles.instruction}>{instructionList[i]}.</Text>
+                </View>
+            );
         }
     })
     return (
-        <ScrollView style={styles.scrollView}>
-            <View style={styles.view}>
+        <ScrollView source={require('/Users/mfuechec/Desktop/RecipeBook/assets/Herbs.jpg')} style={styles.scrollView}>
+            <View source={require('/Users/mfuechec/Desktop/RecipeBook/assets/Herbs.jpg')} style={styles.view}>
+                <Text style={styles.text}>Directions:</Text>
                 {instructions}
             </View>
         </ScrollView>
@@ -22,12 +28,19 @@ const FoodDirections = props => {
 const styles = StyleSheet.create({
     view: {
         height: '100%',
-        width: '100%',
-        alignItems: 'center'
+        width: '100%'
+    },
+    text: {
+        fontSize: 45,
+        alignSelf: 'center'
     },
     step: {
         marginTop: '5%',
         fontSize: 25
+    },
+    instruction: {
+        fontSize: 25,
+        marginLeft: '5%'
     },
     scrollView: {
         height: '100%',
