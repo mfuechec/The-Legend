@@ -22,6 +22,13 @@ const FoodsListing = (props) => {
                             <IngredientsList ingredients={food.ingredients} />
                         </View>
                     </View>
+                    <View style={styles.favContainer}>
+                        <TouchableHighlight style={styles.favStar}>
+                            <Text style={styles.favText}>
+                                Favorite
+                            </Text>
+                        </TouchableHighlight>
+                    </View>
                 </View>
             </Link>
         </TouchableHighlight>
@@ -57,7 +64,8 @@ const styles = StyleSheet.create({
         height: '100%',
         justifyContent: 'center',
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        width: '30%'
     },
     name: {
         alignSelf: 'center',
@@ -70,6 +78,21 @@ const styles = StyleSheet.create({
         marginLeft: '5%',
         marginRight: '2.5%',
         backgroundColor: 'blue'
+    },
+    favContainer: {
+        justifyContent: 'center',
+        width: '25%'
+    },
+    favStar: {
+        alignSelf: 'center',
+        backgroundColor: 'white',
+        borderRadius: 25,
+        width: '50%'
+    },
+    favText: {
+        fontSize: 25,
+        color: 'black',
+        alignSelf: 'center'
     }
 })
 
