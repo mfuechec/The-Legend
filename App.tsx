@@ -12,7 +12,6 @@ import DrinkDirections from './components/Drink/DrinkDirections';
 import FoodDirections from './components/Food/FoodDirections';
 import NavBar from './components/NavBar/NavBar';
 import Sort from './components/Sort/Sort';
-const db = require('./db/index');
 
 const App = () => {
 
@@ -124,8 +123,26 @@ const App = () => {
           })
       }
     },
-    addToFavorite: () => {
-      db.addToFavorite;
+    editFavorites: (data, method) => {
+      let url = 'http://recipebookserver-env.eba-peu3pu5p.us-east-2.elasticbeanstalk.com/';
+      if (whatIsSelected === 'food') {
+        url += `editFavoriteMeals`;
+      } else {
+        url += `editFavoriteDrinks`;
+      }
+
+      return fetch(url, {
+        method: method,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => console.log(response.json()))
+        .catch((error) => {
+          console.error(error);
+        })
     }
   }
 

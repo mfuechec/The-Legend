@@ -23,7 +23,7 @@ const FoodsListing = (props) => {
                         </View>
                     </View>
                     <View style={styles.favContainer}>
-                        <TouchableHighlight onPress={() => { props.manageAPICalls.addToFavorite() }} style={styles.favStar}>
+                        <TouchableHighlight onPress={() => { props.manageAPICalls.editFavorites(food, 'POST') }} style={styles.favStar}>
                             <Text style={styles.favText}>
                                 Favorite
                             </Text>
