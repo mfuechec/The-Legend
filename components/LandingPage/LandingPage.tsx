@@ -1,50 +1,73 @@
-import React from 'react';
-import { StyleSheet, View, ImageBackground, TouchableHighlight } from 'react-native';
-import { Link } from 'react-router-native';
+import React, {useState} from 'react';
+import { View, StyleSheet, Image, Text } from 'react-native';
+import SplashScreen from '../SplashScreen/SplashScreen.tsx';
+import Trending from '../Trending/Trending.tsx';
+import Login from '../Login/Login.tsx';
 
 const LandingPage = (props) => {
-    return (
-        <View style={styles.optionsContainer}>
-            <TouchableHighlight style={styles.foodContainer}>
-                <Link to='/NewFood' onPress={props.manageModal.searchFoods}>
-                    <ImageBackground style={styles.foodImage} source={require('/Users/mfuechec/Desktop/RecipeBook/assets/foodBackground.jpg')}>
-                    </ImageBackground>
-                </Link>
-            </TouchableHighlight>
-            <TouchableHighlight style={styles.foodContainer}>
-                <Link to='/NewDrinks' onPress={props.manageModal.searchDrinks}>
-                    <ImageBackground style={styles.drinksImage} source={require('/Users/mfuechec/Desktop/RecipeBook/assets/drinksBackground.jpg')}>
-                    </ImageBackground>
-                </Link>
-            </TouchableHighlight>
-        </View>
-    )
+
+    let [isLoaded, setIsLoaded] = useState(false);
+    let [isAnimationFinished, setIsAnimationFinished] = useState(false);
+
+    setTimeout(() => {
+        setIsLoaded(true)
+        setTimeout(() => {
+            setIsAnimationFinished(true);
+        }, 2000)
+    }, 1000);
+
+    if (isAnimationFinished) {
+        if (props.isLoggedIn) {
+
+        } else {
+            return (
+                <View style={styles.landingPage}>
+                    <Image style={styles.image} source={require('../../assets/icon.png')} />
+                    <View style={styles.trending}>
+                        <Text style={styles.trendingText}>Trending</Text>
+                        <Trending />
+                    </View>
+                    <Text style={styles.joinText}>Join The Legend</Text>
+                    <Login setLoggedIn={props.setLoggedIn} login={props.login} signup={props.signup}/>
+                </View>
+            )
+        }
+    } else {
+        return (
+            <View style={styles.landingPage}>
+                <SplashScreen isLoaded={isLoaded} />
+            </View>
+        )
+    }
 }
 
 export default LandingPage;
 
 const styles = StyleSheet.create({
-    optionsContainer: {
-        width: '100%',
-        height: '100%',
-        flex: 1
+    landingPage: {
+        backgroundColor: 'white',
+        flex: 1,
+        alignItems: 'center'
     },
-    foodContainer: {
-        width: '100%',
-        flex: .5,
-        justifyContent: 'center'
+    image: {
+        height: 60,
+        width: 60,
+        marginTop: 25
     },
-    foodImage: {
-        width: '100%',
-        height: '100%'
+    trending: {
+        width: '80%',
+        height: '40%',
+        backgroundColor: '#333333',
+        marginTop: '5%'
     },
-    drinksContainer: {
-        width: '100%',
-        flex: .5,
-        justifyContent: 'center'
+    trendingText: {
+        textAlign: 'center',
+        color: 'white',
+        fontSize: 35
     },
-    drinksImage: {
-        width: '100%',
-        height: '100%'
+    joinText: {
+        textAlign: 'center',
+        fontSize: 35,
+        marginTop: '5%'
     }
 })
