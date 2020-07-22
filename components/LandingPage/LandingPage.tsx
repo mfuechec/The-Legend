@@ -14,7 +14,7 @@ const LandingPage = (props) => {
         setTimeout(() => {
             setIsAnimationFinished(true);
         }, 2000)
-    }, 1000);
+    }, 100);
 
     if (isAnimationFinished) {
         if (props.isLoggedIn) {
@@ -22,7 +22,7 @@ const LandingPage = (props) => {
         } else {
             return (
                 <View style={styles.landingPage}>
-                    <Image style={styles.image} source={require('../../assets/icon.png')} />
+                    <Image style={styles.image} source={require('../../assets/splash.png')} />
                     <View style={styles.trending}>
                         <Text style={styles.trendingText}>Trending</Text>
                         <Trending />

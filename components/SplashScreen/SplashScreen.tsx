@@ -34,7 +34,7 @@ const SplashScreen = (props) => {
 
     return (
         <Animated.View style={styles.splashScreen}>
-            <Animated.Image style={{marginTop: marginTop, width: imageSize, height: imageSize}} source={require('../../assets/icon.png')} />
+            <Animated.Image style={{marginTop: marginTop, width: imageSize, height: imageSize}} source={require('../../assets/splash.png')} />
         </Animated.View>
     )
 }
