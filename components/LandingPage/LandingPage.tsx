@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import { View, StyleSheet, Image, Text } from 'react-native';
 import SplashScreen from '../SplashScreen/SplashScreen.tsx';
-import Trending from '../Trending/Trending.tsx';
-import Login from '../Login/Login.tsx';
+import UserLogin from './UserLogin/UserLogin.tsx';
+import HomePage from './HomePage/HomePage.tsx';
 
-const LandingPage = (props) => {
+const LandingPage = ({isLoggedIn, setLoggedIn, login, signup, pointsOfInterest}) => {
 
     let [isLoaded, setIsLoaded] = useState(false);
     let [isAnimationFinished, setIsAnimationFinished] = useState(false);
@@ -17,28 +17,21 @@ const LandingPage = (props) => {
     }, 100);
 
     if (isAnimationFinished) {
-        if (props.isLoggedIn) {
-
+        if (isLoggedIn) {
+            return (
+                <HomePage pointsOfInterest={pointsOfInterest} />
+            )
         } else {
             return (
-                <View style={styles.landingPage}>
-                    <Image style={styles.image} source={require('../../assets/splash.png')} />
-                    <View style={styles.trending}>
-                        <Text style={styles.trendingText}>Trending</Text>
-                        <Trending />
-                    </View>
-                    <Text style={styles.joinText}>Join The Legend</Text>
-                    <Login setLoggedIn={props.setLoggedIn} login={props.login} signup={props.signup}/>
-                </View>
+                <UserLogin pointsOfInterest={pointsOfInterest} />
             )
         }
     } else {
         return (
-            <View style={styles.landingPage}>
-                <SplashScreen isLoaded={isLoaded} />
-            </View>
+            <SplashScreen isLoaded={isLoaded} />
         )
     }
+
 }
 
 export default LandingPage;
