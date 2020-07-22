@@ -2,50 +2,41 @@ import React, {useState, useEffect} from 'react';
 import { View } from 'react-native';
 import { NativeRouter, Route } from "react-router-native";
 import LandingPage from './components/LandingPage/LandingPage';
+let austinCapitol = require('./assets/dummy/austinCapitol.jpg');
+let barton1 = require('./assets/dummy/barton1.jpeg');
+let barton2 = require('./assets/dummy/barton2.jpeg');
+let barton3 = require('./assets/dummy/barton3.jpeg');
+let pearland1 = require('./assets/dummy/pearland1.jpeg');
+let pearland2 = require('./assets/dummy/pearland2.jpeg');
+let pearland3 = require('./assets/dummy/pearland3.jpeg');
+let pearland4 = require('./assets/dummy/pearland4.jpeg');
+let sixth = require('./assets/dummy/sixth.jpeg');
 
 const App = () => {
 
-  let trendingDummyData = [
+  let DummyData = [
     {
       name: `Austin Capitol Building`,
       location: {latitude: 30.274399, longitude: -97.740492},
-      images: [`../../assets/dummy/austinCapitol.jpg`],
+      images: [austinCapitol],
       averageRating: 3
     },
     {
       name:  `Barton Springs`,
       location: {latitude: 30.259110, longitude: -97.752220},
-      images: [`../../assets/dummy/barton1.jpeg`, `../../assets/dummy/barton1.jpeg`, `../../assets/dummy/barton3.jpeg`],
+      images: [barton1, barton2, barton3],
       averageRating: 4.5
     },
     {
       name: `Sixth Street`,
       location: {latitude: 30.266746, longitude: -97.738058},
-      images: [`../../assets/dummy/sixth.jpeg`],
+      images: [sixth],
       averageRating: 1.2
-    },
-    {
-      name: `Pearland`,
-      location: {latitude: , longitude: },
-      images: [`../../assets/dummy/pearland1.jpeg`, `../../assets/dummy/pearland2.jpeg`, `../../assets/dummy/pearland3.jpeg`, `../../assets/dummy/pearland4.jpeg`],
-      averageRating: .6
-    },
-    {
-      name: `Pearland`,
-      location: {latitude: , longitude: },
-      images: [`../../assets/dummy/pearland1.jpeg`, `../../assets/dummy/pearland2.jpeg`, `../../assets/dummy/pearland3.jpeg`, `../../assets/dummy/pearland4.jpeg`],
-      averageRating: .6
-    },
-    {
-      name: `Pearland`,
-      location: {latitude: , longitude: },
-      images: [`../../assets/dummy/pearland1.jpeg`, `../../assets/dummy/pearland2.jpeg`, `../../assets/dummy/pearland3.jpeg`, `../../assets/dummy/pearland4.jpeg`],
-      averageRating: .6
     }
   ]
 
   let [loggedIn, setLoggedIn] = useState(false);
-  let [trending, setTrending] = useState(trendingDummyData);
+  let [pointsOfInterest, setPointsOfInterest] = useState(DummyData);
   let [userLocation, setUserLocation] = useState();
 
   useEffect(()=>{
@@ -78,7 +69,7 @@ const App = () => {
 
       <Route
         exact path='/'
-        render={() => <LandingPage trending={trending} loggedIn={loggedIn} setLoggedIn={setLoggedIn} login={login} signup={signup}/>} />
+        render={() => <LandingPage pointsOfInterest={pointsOfInterest} loggedIn={loggedIn} setLoggedIn={setLoggedIn} login={login} signup={signup}/>} />
 
     </NativeRouter>
   )

@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, TextInput, TouchableOpacity, Text} from 'react-native';
+import {View, StyleSheet, TextInput, Text, Dimensions} from 'react-native';
+import {Input, Button} from 'react-native-elements';
+
+let height = Dimensions.get('window').height;
+let width = Dimensions.get('window').width;
 
 const Login = () => {
 
@@ -28,9 +32,9 @@ const Login = () => {
 
     return (
         <View style={styles.login}>
-            <TextInput style={styles.username} onChangeText={(text)=>{setUsername(text)}} placeholder='username' placeholderTextColor='black' />
-            <TextInput style={styles.password} onChangeText={(text)=>{setPassword(text)}} placeholder='password' placeholderTextColor='black' />
-            <TouchableOpacity style={styles.button} onPress={submit}><Text style={styles.text}>{selected}</Text></TouchableOpacity>
+            <Input containerStyle={styles.input} value={username} onChangeText={(text)=>{setUsername(text)}} placeholder='username' />
+            <Input containerStyle={styles.input} value={password} onChangeText={(text)=>{setPassword(text)}} placeholder='password' />
+            <Button style={styles.button} title={selected} onPress={submit}></Button>
             <Text style={styles.text} onPress={toggle}>{text}</Text>
         </View>
     )
@@ -38,38 +42,16 @@ const Login = () => {
 
 const styles = StyleSheet.create({
     login: {
-        height: '30%',
-        width: '80%',
-        marginTop: '20%'
+        width: width,
+        position: 'absolute',
+        top: height/2,
+        height: height/2,
+        alignItems: 'center'
     },
-    username: {
-        backgroundColor: '#c4c4c4',
-        height: '25%',
-        width: '60%',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        borderRadius: 25,
-        paddingLeft: '5%'
+    input: {
+        width: width/2
     },
-    password: {
-        marginTop: '5%',
-        backgroundColor: '#c4c4c4',
-        height: '22.5%',
-        width: '60%',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        borderRadius: 25,
-        paddingLeft: '5%'
-    },
-    button: {
-        backgroundColor: 'grey',
-        width: '40%',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        marginTop: '5%',
-        height: '20%',
-        borderRadius: 25
-    }, 
+    button: {},
     text: {
         textAlign: 'center',
         marginTop: '6%'
