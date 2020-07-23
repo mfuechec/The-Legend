@@ -4,7 +4,7 @@ import SplashScreen from '../SplashScreen/SplashScreen.tsx';
 import UserLogin from './UserLogin/UserLogin.tsx';
 import HomePage from './HomePage/HomePage.tsx';
 
-const LandingPage = ({isLoggedIn, setLoggedIn, login, signup, pointsOfInterest}) => {
+const LandingPage = ({isLoggedIn, loggedIn, setLoggedIn, login, signup, pointsOfInterest}) => {
 
     let [isLoaded, setIsLoaded] = useState(false);
     let [isAnimationFinished, setIsAnimationFinished] = useState(false);
