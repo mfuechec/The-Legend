@@ -12,7 +12,19 @@ let pearland3 = require('./assets/dummy/pearland3.jpeg');
 let pearland4 = require('./assets/dummy/pearland4.jpeg');
 let sixth = require('./assets/dummy/sixth.jpeg');
 
+import * as Location from "expo-location";
+
 const App = () => {
+
+
+  async function setUsersCurrentLocation() {
+      let { status } = await Location.getPermissionsAsync();
+      if (status !== 'granted') {
+          setErrorMsg('Permission to access location was denied');
+      }
+      let location = await Location.getCurrentPositionAsync({});
+      setUserLocation({latitude: location.coords.latitude, longitude: location.coords.longitude});
+  }
 
   let DummyData = [
     {
@@ -35,25 +47,23 @@ const App = () => {
     }
   ]
 
-  let [loggedIn, setLoggedIn] = useState(false);
-  let [pointsOfInterest, setPointsOfInterest] = useState(DummyData);
-  let [userLocation, setUserLocation] = useState();
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [pointsOfInterest, setPointsOfInterest] = useState(DummyData);
+  const [userLocation, setUserLocation] = useState({});
+  const [errorMsg, setErrorMsg] = useState(null);
 
-  useEffect(()=>{
+
+    useEffect(()=>{
     findUserLocation();
   }, [])
 
   function findUserLocation() {
     // Check for GPS permissions
     // Ask permission if needed
-
-    // Find users coordinates from phone
+    setUsersCurrentLocation();
+      // Find users coordinates from phone
     // Or
     // Get user to input their location
-
-    // Put those coordinates into state
-
-    setUserLocation({latitude: 30.213148, longitude: -97.812519})
   }
 
   const login = ({username, password}) => {
