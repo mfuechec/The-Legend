@@ -13,8 +13,6 @@ let Preview = ({PoI}) => {
         return '.3';
     }
 
-    console.log(PoI.averageRating)
-
     return (
         <View style={styles.preview}>
             <Image style={styles.image} source={{uri: PoI.image}}/>
