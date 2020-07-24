@@ -1,11 +1,13 @@
 import React from 'react';
-import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {Rating} from 'react-native-elements';
 
 let StarRating = ({rating}) => {
     return (
-        <View>
-            <Text>{rating}</Text>
-        </View>
+        <Rating
+            imageSize={20}
+            readonly
+            startingValue={rating}
+        />
     )
 }
 
