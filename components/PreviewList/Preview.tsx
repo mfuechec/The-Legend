@@ -13,9 +13,11 @@ let Preview = ({PoI}) => {
         return '.3';
     }
 
+    console.log(PoI.averageRating)
+
     return (
         <View style={styles.preview}>
-            {/* <Image style={styles.image} source={(PoI.image)}/> */}
+            <Image style={styles.image} source={{uri: PoI.image}}/>
             <Text style={styles.distanceText}>{calcDif()} miles away</Text>
             <View style={styles.ratingContainer}>
                 <Text style={styles.nameText}>{PoI.name}</Text>
