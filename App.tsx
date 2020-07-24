@@ -26,35 +26,15 @@ const App = () => {
       setUserLocation({latitude: location.coords.latitude, longitude: location.coords.longitude});
   }
 
-  let DummyData = [
-    {
-      name: `Austin Capitol Building`,
-      location: {latitude: 30.274399, longitude: -97.740492},
-      images: [austinCapitol],
-      averageRating: 3
-    },
-    {
-      name:  `Barton Springs`,
-      location: {latitude: 30.259110, longitude: -97.752220},
-      images: [barton1, barton2, barton3],
-      averageRating: 4.5
-    },
-    {
-      name: `Sixth Street`,
-      location: {latitude: 30.266746, longitude: -97.738058},
-      images: [sixth],
-      averageRating: 1.2
-    }
-  ]
-
   const [loggedIn, setLoggedIn] = useState(false);
-  const [pointsOfInterest, setPointsOfInterest] = useState(DummyData);
+  const [pointsOfInterest, setPointsOfInterest] = useState();
   const [userLocation, setUserLocation] = useState({});
   const [errorMsg, setErrorMsg] = useState(null);
 
 
-    useEffect(()=>{
-    findUserLocation();
+  useEffect(()=>{
+    // findUserLocation();
+    findTrending();
   }, [])
 
   function findUserLocation() {
@@ -64,6 +44,17 @@ const App = () => {
       // Find users coordinates from phone
     // Or
     // Get user to input their location
+  }
+
+  function findTrending() {
+    let result = []
+    fetch('http://node-express-env.eba-vkmcpazb.us-east-2.elasticbeanstalk.com/trending')
+    .then(response => response.json())
+    .then(data => {
+      data.map(datum => result.push(datum[0]));
+      setPointsOfInterest(result);
+    }
+    );
   }
 
   const login = ({username, password}) => {

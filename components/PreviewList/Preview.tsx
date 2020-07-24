@@ -15,7 +15,7 @@ let Preview = ({PoI}) => {
 
     return (
         <View style={styles.preview}>
-            <Image style={styles.image} source={(PoI.images[0])}/>
+            {/* <Image style={styles.image} source={(PoI.image)}/> */}
             <Text style={styles.distanceText}>{calcDif()} miles away</Text>
             <View style={styles.ratingContainer}>
                 <Text style={styles.nameText}>{PoI.name}</Text>
