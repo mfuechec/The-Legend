@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, Dimensions, Image} from 'react-native';
-import StarRating from './StarRating.tsx';
+import ReadOnlyStarRating from './ReadOnlyStarRating.tsx';
 
 let height = Dimensions.get('window').height;
 let width = Dimensions.get('window').width;
@@ -19,7 +19,7 @@ let Preview = ({PoI}) => {
             <Text style={styles.distanceText}>{calcDif()} miles away</Text>
             <View style={styles.ratingContainer}>
                 <Text style={styles.nameText}>{PoI.name}</Text>
-                <StarRating rating={PoI.averageRating} />
+                <ReadOnlyStarRating rating={PoI.averageRating} />
             </View>
         </View>
     )

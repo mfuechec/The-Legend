@@ -1,7 +1,7 @@
 import React from 'react';
 import {Rating} from 'react-native-elements';
 
-let StarRating = ({rating}) => {
+let ReadOnlyStarRating = ({rating}) => {
     return (
         <Rating
             imageSize={20}
@@ -11,4 +11,4 @@ let StarRating = ({rating}) => {
     )
 }
 
-export default StarRating;
+export default ReadOnlyStarRating;
